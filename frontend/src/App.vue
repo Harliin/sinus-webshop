@@ -28,10 +28,12 @@ export default {
   text-align: center;
   background-color: #EEEEEE;
   background-color: #EEEEEE;
-  padding-right: 100px;
-  padding-left: 100px;
+  padding-right: 150px;
+  padding-left: 150px;
   padding-top: 2rem;
+
 }
+
 
 
 </style>

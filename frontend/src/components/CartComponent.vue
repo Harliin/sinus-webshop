@@ -51,7 +51,7 @@ export default {
     position: absolute;
     width: 15rem;
     height: 20rem;
-    margin-top: 25rem;
+    top: 6rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
