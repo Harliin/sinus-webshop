@@ -24,7 +24,7 @@ export default {
 #app {
   margin-right: auto;
   margin-left: auto;
-  height: 100vh;
+  height: 100%;
   text-align: center;
   background-color: #EEEEEE;
   background-color: #EEEEEE;

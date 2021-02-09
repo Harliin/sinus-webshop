@@ -39,13 +39,13 @@ export default {
     
 
     .image-container{
-        width: 80px;
+        width: 90px;
         height: 70px;
-        background-image: url('../../../assets/sinus-logo.svg');
+        background-image: url('../assets/sinus-logo.svg');
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
-        margin-left: 2rem;
+        margin-left: 7vw;
         
     }
 

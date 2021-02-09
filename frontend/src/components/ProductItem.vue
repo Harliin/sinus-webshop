@@ -1,26 +1,47 @@
 <template>
-  <div class="product-container">
+  <div class="product-container" @click="showModal = true">
+    <Overlay :show="showModal" @close="showModal = false">
+      <div class="modal-overlay">
+        <h2>{{productItem.title}}</h2>
+      </div>
+    </Overlay>
     <div class="header">
-      <h2 class="product-name">Greta</h2>
+      <h2 class="product-name">{{productItem.title}}</h2>
       <button class="icon">
         <img src="@/assets/icon-bag-black.svg" alt />
       </button>
     </div>
-    <p class="short-desc">Unisex</p>
+    <p class="short-desc">{{productItem.shortDesc}}</p>
     <div
       class="img-container"
-      v-bind:style="{ 'background-image': `url(${require('@/assets/hoodie-fire.png')})`}"
-    >
+      v-bind:style="{ 'background-image': `url(${require('@/assets/' + `${productItem.imgFile}`)})`}">
       <span class="price">
-        <p class="amount">799</p>
+        <p class="amount">{{productItem.price}}</p>
         <p class="currency">SEK</p>
       </span>
     </div>
+    
   </div>
 </template>
 
 <script>
-export default {};
+import Overlay from '@/components/Overlay.vue'
+export default {
+  components:{
+    Overlay
+  },
+  // methods:{
+  //   closeModal(){
+  //     this.showModal = false
+  //   }
+  // },
+  data(){return{
+    showModal: false
+  }},
+  props:{
+    productItem: Object
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -35,7 +56,11 @@ export default {};
   padding-top: 1rem;
   box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.06);
 
-
+  .modal-overlay{
+    width: 30vw;
+    height: 30vh;
+    background-color: white;
+  }
   .header {
     display: flex;
     flex-direction: row;

@@ -1,6 +1,6 @@
 <template>
   <div class="cart-component">
-    <button @click="toggleCart" class="cart-button"><img src="../../../assets/icon-bag-white.svg" alt="kunde inte hitta"></button>
+    <button @click="toggleCart" class="cart-button"><img src="~@/assets/icon-bag-white.svg" alt="kunde inte hitta"></button>
     <div v-if="isActive" class="user-cart">
       <span class="arrow"></span>
       <h3>Cart</h3>

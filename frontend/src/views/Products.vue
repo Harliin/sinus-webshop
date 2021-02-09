@@ -1,11 +1,7 @@
 <template>
   <div class="products">
-    <ProductItem />
-    <ProductItem />
-    <ProductItem />
-    <ProductItem />
-    <ProductItem />
-    <ProductItem />
+    <ProductItem v-for="(item, index) of Products" :key="index" :productItem="item"/>
+    
   </div>
 </template>
 
@@ -16,14 +12,22 @@ export default {
   components: {
     ProductItem,
   },
+  computed:{
+    Products(){
+      return this.$store.state.Products
+    }
+  },
+  async created(){
+    await this.$store.dispatch('getProducts')
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .products {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 400px));
-    grid-gap: 0.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(345px, 350px));
+    grid-gap: 1rem;
     margin-right: auto;
     margin-left: auto;
     margin-top: 1rem;
