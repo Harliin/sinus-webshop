@@ -1,10 +1,5 @@
 <template>
-  <div class="product-container" @click="toggleModal">
-    <Overlay :show="showModal" @close="closeModal">
-      <div class="modal-overlay">
-        <h2>{{productItem.title}}</h2>
-      </div>
-    </Overlay>
+  <div class="product-container" @click="showOverlay" >
     <div class="header">
       <h2 class="product-name">{{productItem.title}}</h2>
       <button class="icon">
@@ -25,24 +20,14 @@
 </template>
 
 <script>
-import Overlay from '@/components/Overlay.vue'
 export default {
-  components:{
-    Overlay
-  },
-  data(){return{
-    showModal: false
-  }},
-  methods:{
-    toggleModal(){
-      this.showModal = !this.showModal
-    },
-    closeModal(){
-      console.log("closing!");
-    }
-  },
   props:{
     productItem: Object
+  },
+  methods:{
+    showOverlay(){
+      this.$emit('open', this.productItem)
+    }
   }
 };
 </script>
@@ -59,6 +44,7 @@ export default {
   padding-top: 1rem;
   box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.06);
 
+  
   .modal-overlay{
     width: 30vw;
     height: 30vh;

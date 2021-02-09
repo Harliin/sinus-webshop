@@ -16,11 +16,9 @@ export default {
 </script>
 
 <style lang="scss">
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import '@/Styles/font-styles.scss';
+@import '@/Styles/normalize.scss';
+
 #app {
   margin-right: auto;
   margin-left: auto;
