@@ -1,6 +1,6 @@
 <template>
-  <div class="overlay"  >
-    <div class="fade-layer" :class="{show}" @click="$emit('close')"></div>
+  <div class="overlay"  @click="$emit('close')">
+    <div class="fade-layer" :class="{show}"></div>
     <div class="content" :class="{show}" >
       <slot> didnt choose a product</slot>
     </div>
@@ -11,13 +11,13 @@
 export default {
   props: {
     show: Boolean
-  },
-  methods:{
-      close(){
-          this.show = false
-          this.$emit('close')
-      }
-  }
+   },
+//   methods:{
+//       close(){
+//           this.show = false
+//           this.$emit('close')
+//       }
+//   }
 }
 </script>
 
@@ -45,5 +45,6 @@ export default {
 }
 .content.show{
   opacity: 1;
+  pointer-events: none;
 }
 </style>

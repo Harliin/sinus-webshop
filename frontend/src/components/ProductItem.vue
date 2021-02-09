@@ -1,6 +1,6 @@
 <template>
-  <div class="product-container" @click="showModal = true">
-    <Overlay :show="showModal" @close="showModal = false">
+  <div class="product-container" @click="toggleModal">
+    <Overlay :show="showModal" @close="closeModal">
       <div class="modal-overlay">
         <h2>{{productItem.title}}</h2>
       </div>
@@ -30,14 +30,17 @@ export default {
   components:{
     Overlay
   },
-  // methods:{
-  //   closeModal(){
-  //     this.showModal = false
-  //   }
-  // },
   data(){return{
     showModal: false
   }},
+  methods:{
+    toggleModal(){
+      this.showModal = !this.showModal
+    },
+    closeModal(){
+      console.log("closing!");
+    }
+  },
   props:{
     productItem: Object
   }
