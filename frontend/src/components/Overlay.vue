@@ -2,7 +2,7 @@
   <div class="overlay"  @click="$emit('close')">
     <div class="fade-layer" :class="{show}"></div>
     <div class="content" :class="{show}" >
-      <slot> didnt choose a product</slot>
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -25,7 +25,7 @@ export default {
 .fade-layer{
   position: fixed;
   top: 0;left: 0; bottom: 0; right: 0;
-  background-color: rgba(0,0,0,0.25);
+  background-color: rgba(0,0,0,0.85);
   transition: opacity 0.25s;
   pointer-events: none;
   opacity: 0;

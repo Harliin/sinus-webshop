@@ -2,6 +2,7 @@
   <div id="app">
     <Header /> 
     <router-view/>
+    <footer class="footer"></footer>
   </div>
 </template>
 
@@ -18,6 +19,7 @@ export default {
 <style lang="scss">
 @import '@/Styles/font-styles.scss';
 @import '@/Styles/normalize.scss';
+@import '@/Styles/special-styles.scss';
 
 #app {
   margin-right: auto;
@@ -29,6 +31,15 @@ export default {
   padding-right: 150px;
   padding-left: 150px;
   padding-top: 2rem;
+
+}
+
+.footer{
+  width: 100%;
+  height: 300px;
+  background-color: #404040;
+  position: absolute;
+  left: 0;
 
 }
 

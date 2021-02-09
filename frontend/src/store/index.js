@@ -9,14 +9,18 @@ export default new Vuex.Store({
     Products: null
   },
   mutations: {
-    saveProductsList(state, data){
+    saveProductsList(state, data) {
       state.Products = data
     }
   },
   actions: {
-    async getProducts(context){
+    async getProducts(context) {
       let data = await API.getAllProducts()
       context.commit('saveProductsList', data)
+    },
+    async login() {
+      let user = {email:"customer@example.com", password:"password"}
+      await API.Login(user)
     }
   },
   modules: {

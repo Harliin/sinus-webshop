@@ -8,7 +8,9 @@
         <router-link class="link" to="/register" @click.native="filterActive(1)" :class="{active: isActive == 1}">Register</router-link>
         <!-- <router-link class="link" to="/cart" @click.native="filterActive(2)" :class="{active: isActive == 2}">Cart</router-link>
         <router-link class="link" to="/orderdone" @click.native="filterActive(3)" :class="{active: isActive == 3}">Order Done</router-link> -->
+         <Login/>
         <Cart/>
+      
       </div>
       
 </header>
@@ -16,8 +18,9 @@
 
 <script>
 import Cart from '@/components/CartComponent.vue'
+import Login from '@/components/LoginComponent.vue'
 export default {
-    components:{ Cart},
+    components:{ Cart, Login },
     data(){return{
         isActive: 0
     }},
@@ -39,21 +42,21 @@ export default {
     
 
     .image-container{
-        width: 90px;
-        height: 70px;
+        width: 110px;
+        height: 80px;
         background-image: url('../assets/sinus-logo.svg');
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
-        margin-left: 7vw;
-        
+        margin-left: 12.5vw;    
     }
 
     .routes-container{
-        width: 40%;
+        width: 25vw;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
+        margin-right: 8vw;
         
         .link{
             text-decoration: none;

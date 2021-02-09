@@ -1,6 +1,8 @@
 <template>
   <div class="cart-component">
-    <button @click="toggleCart" class="cart-button"><img src="~@/assets/icon-bag-white.svg" alt="kunde inte hitta"></button>
+    <button @click="toggleCart" class="cart-button">
+      <img src="~@/assets/icon-bag-white.svg" alt="kunde inte hitta" />
+    </button>
     <div v-if="isActive" class="user-cart">
       <span class="arrow"></span>
       <h3>Cart</h3>
@@ -10,43 +12,44 @@
 
 <script>
 export default {
-  data(){return{
-    isActive: false
-  }},
-  methods:{
-    toggleCart(){
-      this.isActive = !this.isActive
-    }
-  }
-
-}
+  data() {
+    return {
+      isActive: false,
+    };
+  },
+  methods: {
+    toggleCart() {
+      this.isActive = !this.isActive;
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-.cart-component{
+.cart-component {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 
-  .cart-button{
+  .cart-button {
     width: 30px;
     height: 30px;
     border-radius: 50px;
-    background-color: #F46969;
+    background-color: #f46969;
     display: flex;
     justify-content: center;
     align-items: center;
     border: none;
     outline: none;
 
-    img{
+    img {
       width: 20px;
       height: 20px;
-    } 
+    }
   }
 
-  .user-cart{
+  .user-cart {
     background-color: white;
     position: absolute;
     width: 15rem;
@@ -56,19 +59,11 @@ export default {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.06);
 
-    .arrow{
-    width: 0;
-    height: 0;
-    border-left: 26px solid transparent;
-    border-right: 26px solid transparent;
-    border-bottom: 20px solid white;
-    position: absolute;
-    margin-top: -0.7rem;
+    .arrow {
+      margin-top: -0.7rem;
+    }
   }
-  }
-
-  
 }
-
 </style>
