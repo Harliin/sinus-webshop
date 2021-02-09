@@ -19,7 +19,7 @@ export default new Vuex.Store({
       context.commit('saveProductsList', data)
     },
     async login() {
-      let user = {email:"customer@example.com", password:"password"}
+      let user = {"email" :"customer@example.com", "password" :"password"}
       await API.Login(user)
     }
   },
