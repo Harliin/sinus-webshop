@@ -5,14 +5,12 @@ export async function getAllProducts() {
 }
 
 export async function Login(userCredentials) {
-    console.log(userCredentials);
     let req = await fetch('http://localhost:5000/api/auth/', {
         method: "POST",
-        header: {"Content-Type": "application/json"},
+        headers: {"Content-Type": "application/json"},
         body: JSON.stringify(userCredentials)
     });
-    console.log(req);
-    
-
+    let data = await req.json()
+    return [req, data]
 }
 

@@ -5,10 +5,10 @@
       </div>
       <div class="routes-container">
         <router-link class="link" to="/" @click.native="filterActive(0)" :class="{active: isActive == 0}">Products</router-link>
-        <router-link class="link" to="/register" @click.native="filterActive(1)" :class="{active: isActive == 1}">Register</router-link>
+        <router-link v-if="!userLoggedIn" class="link" to="/register" @click.native="filterActive(1)" :class="{active: isActive == 1}">Register</router-link>
         <!-- <router-link class="link" to="/cart" @click.native="filterActive(2)" :class="{active: isActive == 2}">Cart</router-link>
         <router-link class="link" to="/orderdone" @click.native="filterActive(3)" :class="{active: isActive == 3}">Order Done</router-link> -->
-         <Login/>
+         <Login v-if="!userLoggedIn"/>
         <Cart/>
       
       </div>
@@ -29,6 +29,14 @@ export default {
             console.log("helloo")
             this.isActive = value
         }
+    },
+    computed:{
+        userLoggedIn(){
+            return this.$store.state.LoggedIn
+        }
+    },
+    async beforeCreate(){
+        await this.$store.getters.loggedIn
     }
 }
 </script>

@@ -6,6 +6,11 @@
 
 <script>
 export default {
+  async beforeCreate(){
+    if(await this.$store.getters.loggedIn){
+      await this.$router.push('/')
+    }
+  }
 
 }
 </script>

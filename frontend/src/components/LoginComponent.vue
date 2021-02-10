@@ -1,11 +1,12 @@
 <template>
   <div class="login">
-    <a class="link">Login</a>
+    <a class="link" @click="isOpen = !isOpen">Login</a>
     <div v-if="isOpen" class="login-form">
       <span class="arrow"></span>
       <div class="inputs">
-        <input type="text" v-model="username" placeholder="username" />
-        <input type="text" v-model="password" placeholder="password" />
+        <input type="text" v-model="email" placeholder="email" :class="{error : wrongCredentials}"/>
+        <input type="text" v-model="password" placeholder="password" :class="{error : wrongCredentials}" />
+        <p v-if="wrongCredentials">Wrong email or password</p>
         <button @click="login" class="login-btn">Login</button>
       </div>
 
@@ -17,14 +18,21 @@
 export default {
   data() {
     return {
-      isOpen: true,
-      username: "",
-      password: ""
+      isOpen: false,
+      email: "customer@example.com",
+      password: "password",
+      wrongCredentials: false
     };
   },
   methods:{
-      login(){
-          this.$store.dispatch('login')
+      async login(){
+           await this.$store.dispatch('login', {email: this.email, password: this.password})
+          if(!this.$store.state.LoggedIn){
+            await (this.wrongCredentials = true)
+          }
+          else{
+            this.wrongCredentials = false
+          }
       }
   }
   
@@ -40,6 +48,7 @@ export default {
 
   .link {
     text-decoration: none;
+    cursor: pointer;
   }
 
   .login-form {
@@ -88,6 +97,16 @@ export default {
           font-size: 18px;
           font-weight: 600;
           border: none;
+      }
+
+      .error{
+        border-color: red
+      }
+
+      p{
+        color: red;
+        align-self: flex-start;
+        margin-left: 2rem;
       }
     }
   }
