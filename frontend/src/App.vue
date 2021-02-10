@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header /> 
-    <router-view/>
+    <router-view class="router-content"/>
     <footer class="footer"></footer>
   </div>
 </template>
@@ -22,15 +22,19 @@ export default {
 @import '@/Styles/special-styles.scss';
 
 #app {
-  margin-right: auto;
-  margin-left: auto;
-  height: 100%;
-  text-align: center;
-  background-color: #EEEEEE;
-  background-color: #EEEEEE;
-  padding-right: 150px;
-  padding-left: 150px;
-  padding-top: 2rem;
+     margin-right: auto;
+    margin-left: auto;
+    height: 100%;
+    text-align: center;
+    background-color: #EEEEEE;
+    background-color: #EEEEEE;
+    padding-right: 15vw;
+    padding-left: 15vw;
+    padding-top: 2rem;
+
+    .router-content{
+      padding-top: 2rem ;
+    }
 
 }
 

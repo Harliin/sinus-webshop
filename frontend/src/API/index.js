@@ -14,3 +14,20 @@ export async function Login(userCredentials) {
     return [req, data]
 }
 
+export async function Register(newUser){
+    try {
+        console.log(newUser);
+        let req = await fetch('http://localhost:5000/api/register/', {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(newUser)
+        });
+        let data = await req.json()
+        console.log(data);
+        
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+

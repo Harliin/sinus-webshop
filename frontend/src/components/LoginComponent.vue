@@ -5,7 +5,7 @@
       <span class="arrow"></span>
       <div class="inputs">
         <input type="text" v-model="email" placeholder="email" :class="{error : wrongCredentials}"/>
-        <input type="text" v-model="password" placeholder="password" :class="{error : wrongCredentials}" />
+        <input type="password" v-model="password" placeholder="password" :class="{error : wrongCredentials}" />
         <p v-if="wrongCredentials">Wrong email or password</p>
         <button @click="login" class="login-btn">Login</button>
       </div>
@@ -19,8 +19,8 @@ export default {
   data() {
     return {
       isOpen: false,
-      email: "customer@example.com",
-      password: "password",
+      email: "",
+      password: "",
       wrongCredentials: false
     };
   },

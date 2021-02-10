@@ -33,6 +33,11 @@ export default new Vuex.Store({
     async login(context, payload) {
       let data = await API.Login(payload)
       context.commit('checkLogin', data)
+    },
+    async register(_, payload){
+      let data = await API.Register(payload)
+      console.log(data);
+      alert(data)
     }
   },
   modules: {

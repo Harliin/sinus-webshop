@@ -56,7 +56,7 @@ export default {
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
-        margin-left: 12.5vw;    
+   
     }
 
     .routes-container{
@@ -64,7 +64,7 @@ export default {
         display: flex;
         justify-content: space-evenly;
         align-items: center;
-        margin-right: 8vw;
+
         
         .link{
             text-decoration: none;
