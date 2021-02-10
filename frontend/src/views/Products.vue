@@ -15,7 +15,7 @@
 
             <p class="price">{{overlayProduct.price}} sek</p>
 
-            <button class="button">
+            <button @click.stop="addToCart">
               <img src="../assets/icon-bag-white.svg" alt="did not find" />
               Take my money
             </button>
@@ -44,7 +44,6 @@ export default {
   },
   methods: {
     showOverlay(data) {
-      console.log(data);
       this.overlayProduct = null;
       this.overlayProduct = data;
       this.showModal = true;
@@ -53,6 +52,11 @@ export default {
     closeModal() {
       this.overlayOpen = false;
       this.showModal = false;
+    },
+    addToCart() {
+      alert("Added to cart");
+      this.$store.dispatch("addToCart", this.overlayProduct);
+      this.closeModal()
     },
   },
   computed: {
@@ -109,21 +113,6 @@ export default {
         font-size: 26px;
         font-weight: 700;
         color: black;
-      }
-
-      .button {
-        align-self: center;
-        border-radius: 30px;
-        width: 200px;
-        height: 50px;
-        border: none;
-        background-color: black;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        font-size: 18px;
-        font-weight: 600;
       }
     }
   }

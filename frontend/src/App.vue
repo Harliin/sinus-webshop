@@ -20,6 +20,7 @@ export default {
 @import '@/Styles/font-styles.scss';
 @import '@/Styles/normalize.scss';
 @import '@/Styles/special-styles.scss';
+@import '@/Styles/buttons.scss';
 
 #app {
      margin-right: auto;

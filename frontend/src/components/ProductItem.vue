@@ -1,5 +1,5 @@
 <template>
-  <div class="product-container" @click="showOverlay" >
+  <div class="product-container" @click="showOverlay">
     <div class="header">
       <h2 class="product-name">{{productItem.title}}</h2>
       <button class="icon">
@@ -9,26 +9,26 @@
     <p class="short-desc">{{productItem.shortDesc}}</p>
     <div
       class="img-container"
-      v-bind:style="{ 'background-image': `url(${require('@/assets/' + `${productItem.imgFile}`)})`}">
+      v-bind:style="{ 'background-image': `url(${require('@/assets/' + `${productItem.imgFile}`)})`}"
+    >
       <span class="price">
         <p class="amount">{{productItem.price}}</p>
         <p class="currency">SEK</p>
       </span>
     </div>
-    
   </div>
 </template>
 
 <script>
 export default {
-  props:{
-    productItem: Object
+  props: {
+    productItem: Object,
   },
-  methods:{
-    showOverlay(){
-      this.$emit('open', this.productItem)
-    }
-  }
+  methods: {
+    showOverlay() {
+      this.$emit("open", this.productItem);
+    },
+  },
 };
 </script>
 
@@ -44,8 +44,7 @@ export default {
   padding-top: 1rem;
   box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.06);
 
-  
-  .modal-overlay{
+  .modal-overlay {
     width: 30vw;
     height: 30vh;
     background-color: white;

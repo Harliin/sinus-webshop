@@ -7,7 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     Products: null,
-    LoggedIn: null
+    LoggedIn: null,
+    Cart: []
   },
   mutations: {
     saveProductsList(state, data) {
@@ -23,6 +24,14 @@ export default new Vuex.Store({
         state.LoggedIn = false
       }
 
+    },
+    addItemToCart(state, object){
+      var addProduct = this.state.Cart.find(o => o._id === object)
+      if (addProduct) {
+        addProduct.amount++ //ska vi lägga till antal?
+      } else {
+        state.Cart.push(object)
+      }
     }
   },
   actions: {
@@ -38,6 +47,10 @@ export default new Vuex.Store({
       let data = await API.Register(payload)
       console.log(data);
       alert(data)
+    },
+    async addToCart(context, payload){
+      console.log(payload);
+      context.commit("addItemToCart", payload)
     }
   },
   modules: {
