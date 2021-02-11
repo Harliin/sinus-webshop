@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
+h1,
 h2,
 h3,
 h4 {
@@ -7,10 +8,10 @@ h4 {
    font-weight: 700;
    font-family: "Open Sans", sans-serif;
 }
-h5{
+h5 {
    font-size: 18px;
    font-weight: 700;
-   font-family: "Open Sans", sans-serif;  
+   font-family: "Open Sans", sans-serif;
 }
 
 p {
@@ -19,18 +20,18 @@ p {
    font-family: "Open Sans", sans-serif;
 }
 
-.short-desc{
+.short-desc {
    font-size: 22px;
    font-weight: 600;
-   color: rgba(0,0,0,0.6);  
+   color: rgba(0, 0, 0, 0.6);
 }
 
-.long-desc{
+.long-desc {
    font-size: 16px;
    font-weight: 400;
-   color: rgba(0,0,0,0.6);  
+   color: rgba(0, 0, 0, 0.6);
 }
 
-.link{
+.link {
    font-family: "Open Sans", sans-serif;
 }

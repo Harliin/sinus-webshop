@@ -36,7 +36,7 @@ export default {
       this.isActive = !this.isActive;
     },
     goToCart() {
-      this.$router.push("/Cart");
+      this.$router.push("/cart");
       this.isActive = false;
     },
   },

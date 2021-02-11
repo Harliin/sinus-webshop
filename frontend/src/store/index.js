@@ -6,13 +6,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    Products: null,
+    Products: [],
     LoggedIn: null,
     Cart: []
   },
   mutations: {
     saveProductsList(state, data) {
-      state.Products = data
+      data.forEach(element => {
+        let product = {_id: element._id, title: element.title, price: element.price,
+           shortDesc: element.shortDesc, longDesc: element.longDesc, imgFile: element.imgFile, counter: 1}
+        state.Products.push(product)
+      });
     },
     checkLogin(state, data){
       console.log(data[1].token);
