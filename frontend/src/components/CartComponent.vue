@@ -96,6 +96,7 @@ export default {
       list-style: none;
       padding: 1rem;
       width: 100%;
+      height: 70%;
       overflow-x: hidden;
     }
 
