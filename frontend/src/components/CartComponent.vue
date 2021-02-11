@@ -6,15 +6,7 @@
     <div v-if="isActive" class="user-cart">
       <span class="arrow"></span>
       <ul>
-        <li v-for="(cartItem, index) of cartItems" :key="index" class="list-items">
-          <img :src="require(`@/assets/${cartItem.imgFile}`)" alt="did not find an image" />
-          <div class="details">
-            <h5>{{cartItem.title}}</h5>
-            <p>{{cartItem.shortDesc}}</p>
-            <p class="product-id">{{cartItem._id}}</p>
-          </div>
-          <p>{{cartItem.price}}</p>
-        </li>
+       <CartItemComponent v-for="(cartItem, index) of cartItems" :key="index" :cartItem="cartItem" class="list-items"/>
       </ul>
       <div class="line"></div>
       <div class="total-sum">
@@ -29,11 +21,15 @@
 </template>
 
 <script>
+import CartItemComponent from "@/components/CartItemComponent.vue";
 export default {
   data() {
     return {
       isActive: false,
     };
+  },
+  components: {
+    CartItemComponent,
   },
   methods: {
     toggleCart() {
@@ -98,37 +94,6 @@ export default {
       padding: 1rem;
       width: 100%;
       overflow-x: hidden;
-
-    
-
-      .list-items {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 1rem;
-
-        img {
-          height: 3.5rem;
-          width: 3.5rem;
-        }
-
-        .details {
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-start;
-          align-items: flex-start;
-          margin-right: 2.5rem;
-
-          p {
-            color: rgba(0, 0, 0, 0.6);
-            font-size: 14px;
-          }
-
-          .product-id {
-            font-size: 8px;
-          }
-        }
-      }
     }
 
     .line {

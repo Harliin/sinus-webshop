@@ -14,3 +14,22 @@ button {
     outline: none;
     cursor: pointer;
   }
+
+  .down-btn{
+    background-image: url('~@/assets/arrow-down.svg');
+    background-repeat: no-repeat;
+    height: 1rem;
+    border: none;
+    background-color: white;
+    background-position: top;
+    align-items: baseline;
+  }
+
+  .up-btn{
+    background-image: url('~@/assets/arrow-up.svg');
+    background-repeat: no-repeat;
+    height: 1rem;
+    border: none;
+    background-color: white;
+    background-position:bottom;
+  }

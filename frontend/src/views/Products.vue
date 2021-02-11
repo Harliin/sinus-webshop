@@ -91,7 +91,7 @@ export default {
     display: grid;
     grid-template-columns: 50% 50%;
     box-shadow: 0px 0px 36px rgba(0, 0, 0, 0.3);
-    z-index: 3;
+
 
     .overlay-image {
       background-color: #eee;

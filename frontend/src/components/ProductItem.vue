@@ -1,17 +1,17 @@
 <template>
-  <div class="product-container" @click="showOverlay">
+  <div class="product-container">
     <div class="header">
-      <h2 class="product-name">{{productItem.title}}</h2>
+      <h2 @click="showOverlay" class="product-name">{{productItem.title}}</h2>
       <button @click="addToCart" class="icon">
         <img src="@/assets/icon-bag-black.svg" alt />
       </button>
     </div>
-    <p class="short-desc">{{productItem.shortDesc}}</p>
-    <div
+    <p @click="showOverlay" class="short-desc">{{productItem.shortDesc}}</p>
+    <div @click="showOverlay"
       class="img-container"
       v-bind:style="{ 'background-image': `url(${require('@/assets/' + `${productItem.imgFile}`)})`}"
     >
-      <span class="price">
+      <span @click="showOverlay" class="price">
         <p class="amount">{{productItem.price}}</p>
         <p class="currency">SEK</p>
       </span>
@@ -77,7 +77,6 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 1;
 
       img {
         width: 20px;
