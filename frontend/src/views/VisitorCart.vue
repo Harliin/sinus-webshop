@@ -15,8 +15,53 @@
         </div>
       </div>
     </div>
-    <div class="customer-details">
+
+    <div>
       <h3>Your details</h3>
+      <div class="customer-details">
+        <div class="delivery">
+          <header></header>
+          <div class="delivery-form">
+            <label for="name">Name</label>
+            <input name="name" type="text" placeholder="Name" />
+
+            <label for="street-adress">Street adress</label>
+            <input name="street-adress" type="text" placeholder="Street Adress" />
+            <div class="area">
+              <section>
+                <label for="city">City</label>
+                <input type="text" name="city" placeholder="City" />
+              </section>
+              <section>
+                <label for="zip-code">Zip Code</label>
+                <input name="zip-code" type="text" placeholder="Zip Code" />
+              </section>
+            </div>
+          </div>
+        </div>
+        <div class="payment-details">
+          <header>
+            <h3 class="payment">Payment</h3>
+          </header>
+          <div class="payment-form">
+            <label for="card-owner">Card owner</label>
+            <input name="card-owner" type="text" placeholder="Card owner" />
+
+            <label for="card-number">Card Number</label>
+            <input name="card-number" type="text" placeholder="Card Number" />
+            <div class="area">
+              <section>
+                <label for="valid">Valid until</label>
+                <input type="text" name="valid" placeholder="Valid until" />
+              </section>
+              <section>
+                <label for="cvv">CVV</label>
+                <input name="cvv" type="text" placeholder="CVV" />
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -41,12 +86,11 @@ export default {
 <style lang="scss" scoped>
 .visitor-cart {
   width: 100%;
-  height: 90vh;
+  height: 100%;
   display: grid;
   grid-template-columns: 50% 50%;
-  margin-top: 3rem;
-  margin-left: 10rem;
-   margin-right: 10rem;
+  padding: 5rem;
+  padding-bottom: 13rem;
 
   h3 {
     text-align: left;
@@ -56,7 +100,7 @@ export default {
 
   .items {
     width: 70%;
-    height: 70%;
+    height: 90%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -84,14 +128,62 @@ export default {
   }
 
   .customer-details {
-    width: 70%;
+    width: 90%;
     height: 70%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     grid-column: 2/3;
-    padding: 1rem;
+
+    .delivery {
+      width: 100%;
+      height: 100%;
+      align-items: center;
+    }
+
+    .delivery-form,
+    .payment-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: left;
+      width: fill;
+
+      label {
+        align-self: flex-start;
+        margin-top: 1rem;
+        font-weight: normal;
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.6);
+        display: block;
+      }
+      input {
+        width: fill;
+        padding: 0.8rem;
+        font-size: 18px;
+        color: black;
+        border-radius: 5px;
+        border: 1px solid rgba(0, 0, 0, 0.6);
+      }
+      .area {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+    }
+
+    .payment-details {
+      width: 100%;
+      height: 100%;
+
+      h3 {
+        padding-top: 1rem;
+      }
+    }
   }
 }
 </style>
