@@ -6,6 +6,9 @@
           <h4>ITEMS</h4>
           <span class="line"></span>
         </header>
+        <ul>
+          <CartItem v-for="(cartItem, index) of cartItems" :key="index" :cartItem="cartItem"/>
+        </ul>
       </div>
       <div class="delivery"></div>
       <div class="payment-details"></div>
@@ -13,7 +16,14 @@
 </template>
 
 <script>
+import CartItem from '@/components/CartItemComponent.vue'
 export default {
+  components:{CartItem},
+  computed: {
+    cartItems() {
+      return this.$store.state.Cart;
+    },
+  },
 
 }
 </script>
@@ -29,9 +39,10 @@ export default {
   align-items: center;
 
   .line{
-    width: 268px;
+    width: fill;
     height: 1px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    margin-left: 1rem;
   }
   .items{
     width: 100%;
@@ -44,8 +55,17 @@ export default {
     grid-row: 2/3;
 
     header{
+      width: 100%;
       display: flex;
       flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    ul{
+      list-style: none;
+      padding: 1rem;
+      width: 100%;
+      overflow-x: hidden;
     }
 
   }
