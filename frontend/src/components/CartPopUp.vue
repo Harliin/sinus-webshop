@@ -41,8 +41,15 @@ export default {
       this.isActive = !this.isActive;
     },
     goToCart() {
-      this.$router.push("/cart");
-      this.isActive = false;
+      if (this.$store.getters.loggedIn) {
+        this.$router.push("/cart");
+        this.isActive = false;
+      }else{
+        this.$router.push("/visitorcart");
+        this.isActive = false;
+      }
+      
+      
     },
   },
   computed: {
@@ -134,12 +141,6 @@ export default {
       width: 100%;
       height: 70%;
       overflow-x: hidden;
-    }
-
-    .line {
-      width: 268px;
-      height: 1px;
-      border: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     .total-sum {
