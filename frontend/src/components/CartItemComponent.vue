@@ -6,10 +6,10 @@
       <p>{{cartItem.shortDesc}}</p>
       <p class="product-id">{{cartItem._id}}</p>
     </div>
-    <p>{{cartItem.price}}</p>
+    <p class="price">{{cartItem.price}}</p>
     <div class="item-qty">
       <button class="up-btn"></button>
-      <p>1</p>
+      <p>{{cartItem.counter}}</p>
       <button class="down-btn"></button>
     </div>
   </div>
@@ -46,18 +46,22 @@ export default {
       color: rgba(0, 0, 0, 0.6);
       font-size: 14px;
     }
-
     .product-id {
       font-size: 8px;
     }
   }
+
+  .price {
+    margin-top: 1rem;
+    margin-right: 1rem;
+  }
+
   .item-qty {
     display: flex;
     flex-direction: column;
-    margin-right: 2rem;
-    p {
-      margin: 0;
-    }
+    height: 2rem;
+    width: 0.5rem;
+    margin-top: 0.8rem;
   }
 }
 </style>
