@@ -9,6 +9,11 @@
         <ul>
           <CartItem v-for="(cartItem, index) of cartItems" :key="index" :cartItem="cartItem"/>
         </ul>
+        <span class="dotted-line"></span>
+        <div class="total">
+          <h4>TOTAL</h4>
+          <p>{{totalPrice}}</p>
+        </div>
       </div>
       <div class="delivery"></div>
       <div class="payment-details"></div>
@@ -23,6 +28,9 @@ export default {
     cartItems() {
       return this.$store.state.Cart;
     },
+    totalPrice(){
+      return this.$store.state.totalPrice
+    }
   },
 
 }
@@ -66,6 +74,16 @@ export default {
       padding: 1rem;
       width: 100%;
       overflow-x: hidden;
+    }
+    .dotted-line{
+      border: 1px dashed rgba(0, 0, 0, 0.6);
+      width: fill;
+    }
+    .total{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
     }
 
   }
