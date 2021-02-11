@@ -7,7 +7,7 @@
       <span class="arrow"></span>
       <ul>
         <li v-for="(cartItem, index) of cartItems" :key="index" class="list-items">
-          <img src="~@/assets/hoodie-fire.png" alt="did not find an image" />
+          <img :src="require(`@/assets/${cartItem.imgFile}`)" alt="did not find an image" />
           <div class="details">
             <h5>{{cartItem.title}}</h5>
             <p>{{cartItem.shortDesc}}</p>
@@ -80,7 +80,7 @@ export default {
     background-color: white;
     position: absolute;
     width: 18rem;
-    height: 25rem;
+    height: 30rem;
     top: 6rem;
     display: flex;
     flex-direction: column;
@@ -97,6 +97,9 @@ export default {
       list-style: none;
       padding: 1rem;
       width: 100%;
+      overflow-x: hidden;
+
+    
 
       .list-items {
         display: flex;
