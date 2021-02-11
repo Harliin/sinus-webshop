@@ -6,7 +6,7 @@
     <div v-if="isActive" class="user-cart">
       <span class="arrow"></span>
       <ul>
-       <CartItemComponent v-for="(cartItem, index) of cartItems" :key="index" :cartItem="cartItem" class="list-items"/>
+       <CartItem v-for="(cartItem, index) of cartItems" :key="index" :cartItem="cartItem" class="list-items"/>
       </ul>
       <div class="line"></div>
       <div class="total-sum">
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import CartItemComponent from "@/components/CartItemComponent.vue";
+import CartItem from "@/components/CartItem.vue";
 export default {
   data() {
     return {
@@ -29,7 +29,7 @@ export default {
     };
   },
   components: {
-    CartItemComponent,
+    CartItem,
   },
   methods: {
     toggleCart() {

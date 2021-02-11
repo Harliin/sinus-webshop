@@ -20,13 +20,31 @@
           <h4>DELIVERY</h4>
           <span class="line"></span>
         </header>
+        <div class="delivery-form">
+          <label for="name">Name</label>
+          <input name="name" type="text" placeholder="Name">
+
+          <label for="street-adress">Street adress</label>
+          <input name="street-adress" type="text" placeholder="Street Adress">
+          <div class="area">
+            <section>
+              <label for="city">City</label>
+              <input type="text" name="city" placeholder="City">
+            </section>
+            <section>
+              <label for="zip-code">Zip Code</label>
+              <input name="zip-code" type="text" placeholder="Zip Code">
+            </section>
+          </div>
+          
+        </div>
       </div>
       <div class="payment-details"></div>
   </div>
 </template>
 
 <script>
-import CartItem from '@/components/CartItemComponent.vue'
+import CartItem from '@/components/CartItem.vue'
 export default {
   components:{CartItem},
   computed: {
@@ -133,6 +151,41 @@ export default {
     grid-column: 2/3;
     grid-row: 2/3;
     padding: 1rem;
+    padding-left: 2rem;
+
+    .delivery-form{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: left;
+      width: fill;
+      
+       label{
+        align-self: flex-start;
+        margin-top: 2rem;
+        font-weight: normal;
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.6);
+        display: block;
+      }
+       input{
+        width: fill;
+        padding: 1rem;
+        font-size: 18px;
+        color: black;
+        border-radius: 5px;
+        border: 1px solid rgba(0, 0, 0, 0.6);
+      }
+      .area{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+      }
+    }
   }
   .payment-details{
 

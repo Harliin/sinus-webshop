@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import Cart from '@/components/CartComponent.vue'
+import Cart from '@/components/CartPopUp.vue'
 import Login from '@/components/LoginComponent.vue'
 export default {
     components:{ Cart, Login },
