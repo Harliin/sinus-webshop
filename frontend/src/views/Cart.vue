@@ -6,7 +6,8 @@
           <h4>ITEMS</h4>
           <span class="line"></span>
         </header>
-        <ul>
+        <div class="user-cart">
+          <ul>
           <CartItem v-for="(cartItem, index) of cartItems" :key="index" :cartItem="cartItem"/>
         </ul>
         <span class="dotted-line"></span>
@@ -14,6 +15,8 @@
           <h4>TOTAL</h4>
           <p>{{totalPrice}}</p>
         </div>
+        </div>
+        
       </div>
       <div class="delivery">
         <header>
@@ -39,7 +42,30 @@
           
         </div>
       </div>
-      <div class="payment-details"></div>
+      <div class="payment-details">
+        <header>
+          <h4>PAYMENT_DETAILS</h4>
+          <span class="line"></span>
+        </header>
+        <div class="payment-form">
+          <label for="card-owner">Card owner</label>
+          <input name="card-owner" type="text" placeholder="Card owner">
+
+          <label for="card-number">Card Number</label>
+          <input name="card-number" type="text" placeholder="Card Number">
+          <div class="area">
+            <section>
+              <label for="valid">Valid until</label>
+              <input type="text" name="valid" placeholder="Valid until">
+            </section>
+            <section>
+              <label for="cvv">CVV</label>
+              <input name="cvv" type="text" placeholder="CVV">
+            </section>
+          </div>
+          
+        </div>
+      </div>
   </div>
 </template>
 
@@ -77,7 +103,7 @@ export default {
       align-items: center;
       margin-bottom: 1rem;
 
-      .line{
+    .line{
     width: fill;
     height: 1px;
     border: 1px solid rgba(0, 0, 0, 0.6);
@@ -86,8 +112,8 @@ export default {
     h4{
           font-weight: normal;
           font-size: 16px;
-          line-height: 22px;
           color: rgba(0, 0, 0, 0.6);
+          text-align: left;
     }
   }
   
@@ -103,15 +129,23 @@ export default {
     padding: 1rem;
     
 
-    
+    .user-cart{
+      background-color: white;
+      width: 100%;
+      height: 40rem;
+      border-radius: 5px;
+      box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.1);
+      
+    }
     ul{
       list-style: none;
       padding: 1rem;
       width: 100%;
       height: 30rem;
       overflow-x: hidden;
-      overflow-y: hidden;
+      overflow-y: scroll;
       margin-bottom: 2rem;
+
     }
     .dotted-line{
       border: 1px dashed rgba(0, 0, 0, 0.6);
@@ -124,6 +158,7 @@ export default {
       justify-content: space-between;
       align-items: center;
       width: 100%;
+      padding: .5rem;
 
       h4{
         font-weight: normal;
@@ -152,8 +187,9 @@ export default {
     grid-row: 2/3;
     padding: 1rem;
     padding-left: 2rem;
-
-    .delivery-form{
+  }
+  .delivery-form,
+  .payment-form{
       display: flex;
       justify-content: center;
       align-items: center;
@@ -186,8 +222,19 @@ export default {
 
       }
     }
-  }
   .payment-details{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    grid-column: 3/4;
+    grid-row: 2/3;
+    padding: 1rem;
+    padding-left: 2rem;
+
+
 
   }
 
