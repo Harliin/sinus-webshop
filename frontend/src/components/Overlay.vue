@@ -32,6 +32,7 @@ export default {
   transition: opacity 0.25s;
   pointer-events: none;
   opacity: 0;
+  z-index: 2;
 }
 .fade-layer.show {
   pointer-events: all;
@@ -46,6 +47,7 @@ export default {
   top: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
+  z-index: 3;
 }
 .content.show {
   opacity: 1;

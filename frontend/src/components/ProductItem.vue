@@ -2,7 +2,7 @@
   <div class="product-container" @click="showOverlay">
     <div class="header">
       <h2 class="product-name">{{productItem.title}}</h2>
-      <button class="icon">
+      <button @click="addToCart" class="icon">
         <img src="@/assets/icon-bag-black.svg" alt />
       </button>
     </div>
@@ -27,6 +27,10 @@ export default {
   methods: {
     showOverlay() {
       this.$emit("open", this.productItem);
+    },
+      addToCart() {
+      alert("Added to cart");
+      this.$store.dispatch("addToCart", this.productItem);
     },
   },
 };
@@ -73,6 +77,7 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
+      z-index: 1;
 
       img {
         width: 20px;
