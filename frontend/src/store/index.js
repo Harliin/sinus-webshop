@@ -13,6 +13,7 @@ export default new Vuex.Store({
   },
   mutations: {
     saveProductsList(state, data) {
+      state.Products = []
       data.forEach(element => {
         let product = {
           _id: element._id, title: element.title, price: element.price,
