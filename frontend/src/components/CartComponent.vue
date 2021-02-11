@@ -12,7 +12,7 @@
       <div class="total-sum">
         <p>TOTAL</p>
         <p>
-          <b>$$$</b>
+          <b>{{totalPrice}}</b>
         </p>
       </div>
       <button @click="goToCart">Go to checkout</button>
@@ -44,6 +44,9 @@ export default {
     cartItems() {
       return this.$store.state.Cart;
     },
+    totalPrice(){
+      return this.$store.state.totalPrice
+    }
   },
 };
 </script>

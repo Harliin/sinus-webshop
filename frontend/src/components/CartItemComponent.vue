@@ -8,9 +8,9 @@
     </div>
     <p class="price">{{cartItem.price}}</p>
     <div class="item-qty">
-      <button class="up-btn"></button>
+      <button @click="addItem(cartItem)" class="up-btn"></button>
       <p>{{cartItem.counter}}</p>
-      <button class="down-btn"></button>
+      <button @click="decrementItem(cartItem._id)" class="down-btn"></button>
     </div>
   </div>
 </template>
@@ -20,6 +20,15 @@ export default {
   props: {
     cartItem: Object,
   },
+  methods:{
+    decrementItem(id){
+        this.$store.dispatch("decrementItem", id)
+    },
+    addItem(item){
+        this.$store.dispatch("addToCart", item)
+    }
+
+  }
 };
 </script>
 
