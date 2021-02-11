@@ -1,12 +1,22 @@
 <template>
   <div class="cart-component">
-    <button @click="toggleCart" class="cart-button">
-      <img src="~@/assets/icon-bag-white.svg" alt="kunde inte hitta" />
-    </button>
+    <div class="cart-icon">
+      <button @click="toggleCart" class="cart-button">
+        <img src="~@/assets/icon-bag-white.svg" alt="kunde inte hitta" />
+      </button>
+      <div v-if="cartCounter > 0" class="counter">
+        <p>{{cartCounter}}</p>
+      </div>
+    </div>
     <div v-if="isActive" class="user-cart">
       <span class="arrow"></span>
       <ul>
-       <CartItemComponent v-for="(cartItem, index) of cartItems" :key="index" :cartItem="cartItem" class="list-items"/>
+        <CartItemComponent
+          v-for="(cartItem, index) of cartItems"
+          :key="index"
+          :cartItem="cartItem"
+          class="list-items"
+        />
       </ul>
       <div class="line"></div>
       <div class="total-sum">
@@ -44,9 +54,16 @@ export default {
     cartItems() {
       return this.$store.state.Cart;
     },
-    totalPrice(){
-      return this.$store.state.totalPrice
-    }
+    totalPrice() {
+      return this.$store.state.totalPrice;
+    },
+    cartCounter() {
+      let total = 0;
+      for (let s of this.$store.state.Cart) {
+        total += s.counter;
+      }
+      return total;
+    },
   },
 };
 </script>
@@ -57,6 +74,11 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  .cart-icon {
+    display: flex;
+    height: 2rem;
+  }
 
   .cart-button {
     width: 30px;
@@ -72,6 +94,25 @@ export default {
     img {
       width: 20px;
       height: 20px;
+    }
+  }
+
+  .counter {
+    margin-left: 1.5rem;
+    color: black;
+    background-color: white;
+    height: 1.2rem;
+    width: 1.2rem;
+    display: flex;
+    border-radius: 100px;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.1);
+
+    p {
+      font-size: 15px;
+      font-weight: 600;
     }
   }
 
