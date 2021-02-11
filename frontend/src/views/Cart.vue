@@ -15,7 +15,12 @@
           <p>{{totalPrice}}</p>
         </div>
       </div>
-      <div class="delivery"></div>
+      <div class="delivery">
+        <header>
+          <h4>DELIVERY</h4>
+          <span class="line"></span>
+        </header>
+      </div>
       <div class="payment-details"></div>
   </div>
 </template>
@@ -46,12 +51,28 @@ export default {
   justify-content: center;
   align-items: center;
 
-  .line{
+  header{ 
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 1rem;
+
+      .line{
     width: fill;
     height: 1px;
     border: 1px solid rgba(0, 0, 0, 0.6);
     margin-left: 1rem;
+    }
+    h4{
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 22px;
+          color: rgba(0, 0, 0, 0.6);
+    }
   }
+  
   .items{
     width: 100%;
     height: 100%;
@@ -64,31 +85,15 @@ export default {
     padding: 1rem;
     
 
-    header{
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: center;
-      margin-bottom: 1rem;
-
-      h4{
-        font-weight: normal;
-        font-size: 16px;
-        line-height: 22px;
-        color: rgba(0, 0, 0, 0.6);
-      }
-    }
+    
     ul{
       list-style: none;
       padding: 1rem;
       width: 100%;
-      height: 40rem;
+      height: 30rem;
       overflow-x: hidden;
       overflow-y: hidden;
       margin-bottom: 2rem;
-
-
     }
     .dotted-line{
       border: 1px dashed rgba(0, 0, 0, 0.6);
@@ -119,7 +124,15 @@ export default {
 
   }
   .delivery{
-
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    padding: 1rem;
   }
   .payment-details{
 
