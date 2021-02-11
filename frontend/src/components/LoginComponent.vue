@@ -61,7 +61,8 @@ export default {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.06);
+    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
 
     .arrow {
       margin-top: -0.7rem;
