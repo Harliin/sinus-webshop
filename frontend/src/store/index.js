@@ -8,8 +8,10 @@ export default new Vuex.Store({
   state: {
     Products: [],
     LoggedIn: null,
+    LoggedInUser: {},
     Cart: [],
     totalPrice: 0
+
   },
   mutations: {
     saveProductsList(state, data) {
@@ -23,9 +25,10 @@ export default new Vuex.Store({
       });
     },
     checkLogin(state, data) {
-      console.log(data[1].token);
+      console.log(data[1]);
       if (data[0].status == 200) {
         state.LoggedIn = true
+        state.LoggedInUser = data[1].user
         sessionStorage.setItem("token", data[1].token)
       }
       else {
@@ -65,7 +68,6 @@ export default new Vuex.Store({
     },
     async register(_, payload) {
       let data = await API.Register(payload)
-      console.log(data);
       alert(data)
     },
     async addToCart(context, payload) {
@@ -74,6 +76,10 @@ export default new Vuex.Store({
     },
     async decrementItem(context, payload) {
       context.commit("decrementItem", payload)
+    },
+    async sendOrder(_context, payload){
+      let data = await API.SendOrder(payload)
+      console.log(data);
     }
   },
   modules: {

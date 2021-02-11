@@ -25,18 +25,18 @@
         </header>
         <div class="delivery-form">
           <label for="name">Name</label>
-          <input name="name" type="text" placeholder="Name">
+          <input name="name" type="text" placeholder="Name" v-model="user.name">
 
           <label for="street-adress">Street adress</label>
-          <input name="street-adress" type="text" placeholder="Street Adress">
+          <input name="street-adress" type="text" placeholder="Street Adress" v-model="user.adress.street">
           <div class="area">
             <section>
               <label for="city">City</label>
-              <input type="text" name="city" placeholder="City">
+              <input type="text" name="city" placeholder="City" v-model="user.adress.city">
             </section>
             <section>
               <label for="zip-code">Zip Code</label>
-              <input name="zip-code" type="text" placeholder="Zip Code">
+              <input name="zip-code" type="text" placeholder="Zip Code" v-model="user.adress.zip">
             </section>
           </div>
           
@@ -49,22 +49,22 @@
         </header>
         <div class="payment-form">
           <label for="card-owner">Card owner</label>
-          <input name="card-owner" type="text" placeholder="Card owner">
+          <input name="card-owner" type="text" placeholder="Card owner" v-model="cardOwner">
 
           <label for="card-number">Card Number</label>
-          <input name="card-number" type="text" placeholder="Card Number">
+          <input name="card-number" type="text" placeholder="Card Number" v-model="cardNumber">
           <div class="area">
             <section>
               <label for="valid">Valid until</label>
-              <input type="text" name="valid" placeholder="Valid until">
+              <input type="text" name="valid" placeholder="Valid until" v-model="validUntil">
             </section>
             <section>
               <label for="cvv">CVV</label>
-              <input name="cvv" type="text" placeholder="CVV">
+              <input name="cvv" type="text" placeholder="CVV" v-model="cvv">
             </section>
-          </div>
-          
+          </div> 
         </div>
+        <button class="buy-btn" @click="sendOrder"><img src="@/assets/icon-bag-white.svg" /> Take my money!</button>
       </div>
   </div>
 </template>
@@ -73,6 +73,13 @@
 import CartItem from '@/components/CartItem.vue'
 export default {
   components:{CartItem},
+  data(){return{
+    user: {},
+    cardOwner: "",
+    cardNumber: "",
+    validUntil: "",
+    cvv: null
+  }},
   computed: {
     cartItems() {
       return this.$store.state.Cart;
@@ -81,6 +88,20 @@ export default {
       return this.$store.state.totalPrice
     }
   },
+  methods:{
+    sendOrder(){
+      console.log("sending order");
+      if(this.cardOwner == "" || this.cardNumber == "" || this.validUntil == "" || this.cvv == null ){
+        alert("All fields needs to be filled")
+        return
+      }
+      let payment = {cardOwner: this.cardOwner, cardNumber: this.cardNumber, validUntil: this.validUntil, cvv: this.cvv}
+      this.$store.dispatch('sendOrder',{items: this.$store.state.Cart, customer: this.user, payment: payment})
+    }
+  },
+  beforeMount(){
+    this.user = this.$store.state.LoggedInUser;
+  }
 
 }
 </script>
@@ -132,9 +153,11 @@ export default {
     .user-cart{
       background-color: white;
       width: 100%;
-      height: 40rem;
+      height: 37rem;
       border-radius: 5px;
       box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
       
     }
     ul{
@@ -143,13 +166,12 @@ export default {
       width: 100%;
       height: 30rem;
       overflow-x: hidden;
-      overflow-y: scroll;
       margin-bottom: 2rem;
 
     }
     .dotted-line{
       border: 1px dashed rgba(0, 0, 0, 0.6);
-      width: fill;
+      width: 100%;
       margin-bottom: 1rem;
     }
     .total{
@@ -234,6 +256,11 @@ export default {
     padding: 1rem;
     padding-left: 2rem;
 
+    .buy-btn{
+      align-self: flex-end;
+      margin-top: 2rem;
+      width: 45%;
+    }
 
 
   }

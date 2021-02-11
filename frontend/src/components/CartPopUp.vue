@@ -41,7 +41,7 @@ export default {
       this.isActive = !this.isActive;
     },
     goToCart() {
-      if (this.$store.getters.loggedIn) {
+      if (this.$store.state.LoggedIn) {
         this.$router.push("/cart");
         this.isActive = false;
       }else{
