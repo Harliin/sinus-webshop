@@ -57,10 +57,12 @@ export default {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
     grid-column: 1/2;
     grid-row: 2/3;
+    padding: 1rem;
+    
 
     header{
       width: 100%;
@@ -68,22 +70,51 @@ export default {
       flex-direction: row;
       justify-content: flex-start;
       align-items: center;
+      margin-bottom: 1rem;
+
+      h4{
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 22px;
+        color: rgba(0, 0, 0, 0.6);
+      }
     }
     ul{
       list-style: none;
       padding: 1rem;
       width: 100%;
+      height: 40rem;
       overflow-x: hidden;
+      overflow-y: hidden;
+      margin-bottom: 2rem;
+
+
     }
     .dotted-line{
       border: 1px dashed rgba(0, 0, 0, 0.6);
       width: fill;
+      margin-bottom: 1rem;
     }
     .total{
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      align-items: center;
       width: 100%;
+
+      h4{
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 25px;
+
+        color: #000000;
+      }
+      p{
+        font-weight: bold;
+        font-size: 18px;
+        text-align: right;
+        color: black;
+      }
     }
 
   }
