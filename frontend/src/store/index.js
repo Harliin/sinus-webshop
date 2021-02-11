@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     Products: [],
     LoggedIn: null,
-    Cart: []
+    Cart: [],
+    totalPrice: 0
   },
   mutations: {
     saveProductsList(state, data) {
@@ -29,15 +30,13 @@ export default new Vuex.Store({
       }
 
     },
-    addItemToCart(state, object){
-      var addProduct = this.state.Cart.find(o => o._id == object._id)
-      if (addProduct) {
-        addProduct.amount++ 
+    addItemToCart(state, item){
+      let productIndex = state.Cart.findIndex(o => o._id == item._id)
+      state.totalPrice += item.price
+      if (productIndex != -1) {
+        state.Cart[productIndex].counter++ 
       } else {
-        state.Cart.push({
-          cartItem: object,
-          amount: 1,
-        })
+        state.Cart.push(item)
       }
     }
   },

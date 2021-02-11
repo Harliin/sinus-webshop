@@ -1,15 +1,15 @@
 <template>
   <div class="cart-item">
-    <img :src="require(`@/assets/${cartItem.item.imgFile}`)" alt="did not find an image" />
+    <img :src="require(`@/assets/${cartItem.imgFile}`)" alt="did not find an image" />
     <div class="details">
-      <h5>{{cartItem.item.title}}</h5>
-      <p>{{cartItem.item.shortDesc}}</p>
-      <p class="product-id">{{cartItem.item._id}}</p>
+      <h5>{{cartItem.title}}</h5>
+      <p>{{cartItem.shortDesc}}</p>
+      <p class="product-id">{{cartItem._id}}</p>
     </div>
-    <p class="price">{{cartItem.item.price}}</p>
+    <p class="price">{{cartItem.price}}</p>
     <div class="item-qty">
       <button class="up-btn"></button>
-      <p>{{cartItem.amount}}</p>
+      <p>{{cartItem.counter}}</p>
       <button class="down-btn"></button>
     </div>
   </div>
