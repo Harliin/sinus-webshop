@@ -26,11 +26,14 @@ export default new Vuex.Store({
 
     },
     addItemToCart(state, object){
-      var addProduct = this.state.Cart.find(o => o._id === object)
+      var addProduct = this.state.Cart.find(o => o._id == object._id)
       if (addProduct) {
-        addProduct.amount++ //ska vi lägga till antal?
+        addProduct.amount++ 
       } else {
-        state.Cart.push(object)
+        state.Cart.push({
+          cartItem: object,
+          amount: 1,
+        })
       }
     }
   },
