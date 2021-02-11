@@ -3,7 +3,9 @@ import VueRouter from 'vue-router'
 import Products from '../views/Products.vue'
 import Register from '../views/Register.vue'
 import Cart from '../views/Cart.vue'
+import VisitorCart from '../views/VisitorCart.vue'
 import OrderDone from '../views/OrderDone.vue'
+
 
 Vue.use(VueRouter)
 
@@ -29,6 +31,10 @@ const routes = [
     path: '/register',
     component: Register
   },
+  {
+    path: '/visitorCart',
+    component: VisitorCart
+  }
 ]
 
 const router = new VueRouter({
