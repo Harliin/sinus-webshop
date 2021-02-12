@@ -51,11 +51,16 @@ export default new Vuex.Store({
     decrementItem(state, item) {
       let index = state.Cart.findIndex(i => i._id == item)
       state.totalPrice -= state.Cart[index].price
-      if (state.Cart[index].counter <= 1 ) {
+      if (state.Cart[index].counter <= 1) {
         state.Cart.splice(index, 1)
-      }else{
+      } else {
         state.Cart[index].counter--
       }
+    },
+    logOut(state) {
+      sessionStorage.removeItem('token')
+      state.LoggedIn = false
+      state.LoggedInUser = {}
     }
 
   },
@@ -79,9 +84,12 @@ export default new Vuex.Store({
     async decrementItem(context, payload) {
       context.commit("decrementItem", payload)
     },
-    async sendOrder(_context, payload){
+    async sendOrder(_context, payload) {
       let data = await API.SendOrder(payload)
       console.log(data);
+    },
+    async LogOut(context) {
+      context.commit("logOut")
     }
   },
   modules: {
@@ -98,6 +106,10 @@ export default new Vuex.Store({
         state.LoggedIn = false
         return false
       }
+    },
+
+    getUser: state => {
+      return state.LoggedInUser
     }
   }
 })
