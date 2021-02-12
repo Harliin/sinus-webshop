@@ -52,7 +52,7 @@ export default {
    height: 520px;
    width: 344px;
    padding-top: 1rem;
-   box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.06);
+   box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.3);
 
    .modal-overlay {
       width: 30vw;

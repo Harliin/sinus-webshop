@@ -78,7 +78,7 @@ export default {
     grid-row: 2/3;
     width: 100%;
     height: 90%;
-    background-color: $mainGray;
+    background-color: lightgray;
     box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.7);
     border-radius: 10px;
     display: grid;
@@ -110,6 +110,9 @@ export default {
       height: 2rem;
       border-radius: 5px;
       margin-right: 1rem;
+      background-color: $mainGray;
+      color: $brightYellow;
+      font-weight: 400;
     }
 
     .name {
@@ -137,7 +140,7 @@ export default {
 
       label {
         align-self: flex-start;
-        color: $gold;
+        color: $mainGray;
         font-size: 18px;
         font-weight: 600;
         margin-top: 3rem;
@@ -146,7 +149,6 @@ export default {
       input {
         padding: 0.5rem;
         border-radius: 5px;
-        border: none;
         pointer-events: none;
       }
 
@@ -174,13 +176,20 @@ export default {
       grid-row: 1/3;
       display: flex;
       flex-direction: column;
-      color: $darkerYellow;
+      background-color: whitesmoke;
+      color: $mainGray;
       align-items: flex-start;
       justify-content: flex-start;
       place-self: center;
-      widows: 100%;
-      height: 100%;
+      width: 70%;
+      height: 90%;
       margin-top: 5rem;
+      border-radius: 10px;
+
+      h3{
+         margin-left: 1rem;
+         color: $mainGray;
+      }
 
       ul {
         list-style: none;
@@ -188,6 +197,7 @@ export default {
         overflow: auto;
 
         .list-item {
+          margin-left: 1rem;
           margin-top: 1.5rem;
           text-align: left;
           font-size: 20px;
@@ -199,7 +209,8 @@ export default {
       grid-row: 3/4;
       grid-column: 2/4;
       place-self: center;
-      background-color: #f56969;
+      background-color: $darkerYellow;
+      box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.3);
     }
   }
 }

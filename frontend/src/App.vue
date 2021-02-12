@@ -23,7 +23,7 @@ export default {
    margin-left: auto;
    height: 100%;
    text-align: center;
-   background-color: white;
+   background-color: whitesmoke;
    padding-right: 15vw;
    padding-left: 15vw;
    padding-top: 2rem;
