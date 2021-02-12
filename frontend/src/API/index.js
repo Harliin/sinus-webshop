@@ -33,13 +33,23 @@ export async function Register(newUser){
 
 export async function SendOrder(Order) {
     console.log("Api sending order");
-    let req = await fetch('http://localhost:5000/api/orders/', {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(Order)
-    });
-    let data = await req.json()
-    console.log(data);
-    return [req, data]
+    console.log(Order.user);
+    try{
+        let req = await fetch('http://localhost:5000/api/orders/', {
+            method: "POST",
+            headers: {"Content-Type": "application/json",
+                      "Authorization": `Bearer ${Order.user}`},
+            body: JSON.stringify(Order)
+        });
+        let data = await req.json()
+        console.log(data);
+        return [req, data]
+    }
+    catch(ex){
+        console.log(ex);
+    }
+    
+    
+    
 }
 

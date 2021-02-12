@@ -10,7 +10,8 @@ export default new Vuex.Store({
     LoggedIn: null,
     LoggedInUser: {},
     Cart: [],
-    totalPrice: 0
+    totalPrice: 0,
+    Token: ""
 
   },
   mutations: {
@@ -30,6 +31,7 @@ export default new Vuex.Store({
         state.LoggedIn = true
         state.LoggedInUser = data[1].user
         sessionStorage.setItem("token", data[1].token)
+        state.Token = data[1].token
       }
       else {
         state.LoggedIn = false
@@ -89,6 +91,7 @@ export default new Vuex.Store({
       let token = sessionStorage.getItem("token")
       if (token) {
         state.LoggedIn = true
+        state.Token = token
         return true
       }
       else {

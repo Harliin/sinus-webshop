@@ -84,6 +84,22 @@ export default {
     cartItems() {
       return this.$store.state.Cart;
     },
+    cartItemId(){
+      let ids = []
+      for(const item of this.cartItems)
+      {
+        if(item.counter == 1){
+           ids.push(item._id)
+        }
+        else{
+          for(let i = 0; i < item.counter; i++){
+            ids.push(item._id)
+          }
+        }
+       
+      }
+      return ids
+    },
     totalPrice(){
       return this.$store.state.totalPrice
     }
@@ -91,12 +107,13 @@ export default {
   methods:{
     sendOrder(){
       console.log("sending order");
-      if(this.cardOwner == "" || this.cardNumber == "" || this.validUntil == "" || this.cvv == null ){
-        alert("All fields needs to be filled")
-        return
-      }
-      let payment = {cardOwner: this.cardOwner, cardNumber: this.cardNumber, validUntil: this.validUntil, cvv: this.cvv}
-      this.$store.dispatch('sendOrder',{items: this.$store.state.Cart, customer: this.user, payment: payment})
+      // if(this.cardOwner == "" || this.cardNumber == "" || this.validUntil == "" || this.cvv == null ){
+      //   alert("All fields needs to be filled")
+      //   return
+      // }
+      
+      this.$store.dispatch('sendOrder',{items: this.cartItemId, user: this.$store.state.Token})
+      this.$router.push('/orderdone')
     }
   },
   beforeMount(){
