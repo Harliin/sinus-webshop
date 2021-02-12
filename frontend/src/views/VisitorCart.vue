@@ -59,6 +59,7 @@
                 <input name="cvv" type="text" placeholder="CVV" />
               </section>
             </div>
+            <button class="submit-btn">Submit Order</button>
           </div>
         </div>
       </div>
@@ -153,7 +154,7 @@ export default {
 
       label {
         align-self: flex-start;
-        margin-top: 1rem;
+        margin-top: 0.8rem;
         font-weight: normal;
         font-size: 14px;
         color: rgba(0, 0, 0, 0.6);
@@ -161,7 +162,7 @@ export default {
       }
       input {
         width: fill;
-        padding: 0.8rem;
+        padding: 0.6rem;
         font-size: 18px;
         color: black;
         border-radius: 5px;
@@ -182,8 +183,15 @@ export default {
 
       h3 {
         padding-top: 1rem;
+        padding-bottom: 0.5px;
       }
     }
+  }
+
+  .submit-btn {
+    align-self: flex-end;
+    margin-top: 2rem;
+    width: 45%;
   }
 }
 </style>
