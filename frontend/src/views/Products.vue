@@ -25,7 +25,7 @@
 
                   <button @click.stop="addToCart">
                      <img
-                        src="../assets/icon-bag-black.svg"
+                        src="../assets/icon-bag-gray.svg"
                         alt="did not find"
                      />
                      Take my money

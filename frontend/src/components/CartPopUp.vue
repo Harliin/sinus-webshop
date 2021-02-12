@@ -2,7 +2,7 @@
    <div class="cart-component">
       <div class="cart-icon">
          <button @click="toggleCart" class="cart-button">
-            <img src="~@/assets/icon-bag-white.svg" alt="kunde inte hitta" />
+            <img src="~@/assets/icon-bag-gray.svg" alt="kunde inte hitta" />
          </button>
          <div v-if="cartCounter > 0" class="counter">
             <p>{{ cartCounter }}</p>

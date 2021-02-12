@@ -5,7 +5,7 @@
             {{ productItem.title }}
          </h2>
          <button @click="addToCart" class="icon">
-            <img src="@/assets/icon-bag-black.svg" alt />
+            <img src="@/assets/icon-bag-gray.svg" alt />
          </button>
       </div>
       <p @click="showOverlay" class="short-desc">{{ productItem.shortDesc }}</p>
@@ -77,7 +77,7 @@ export default {
          width: 30px;
          height: 30px;
          border-radius: 50px;
-         background-color: #eee;
+         background-color: $brightYellow;
          border: none;
          outline: none;
          display: flex;
@@ -113,11 +113,11 @@ export default {
       .price {
          display: flex;
          flex-direction: row;
-         background-color: black;
+         background-color: $gold;
          width: 122px;
          height: 47px;
          border-radius: 30px;
-         color: white;
+         color: $mainGray;
          justify-content: center;
          align-items: center;
          align-self: flex-start;

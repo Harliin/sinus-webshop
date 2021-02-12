@@ -88,8 +88,8 @@ export default {
          text-decoration: none;
          font-size: 18px;
          line-height: 25px;
-         color: black;
-         font-weight: 500;
+         color: $mainGray;
+         font-weight: 600;
       }
       .active {
          font-weight: 600;
