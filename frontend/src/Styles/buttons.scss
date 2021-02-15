@@ -16,6 +16,11 @@ button {
    outline: none;
    cursor: pointer;
    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.2);
+
+   &:hover {
+      background-color: $darkerYellow;
+      box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.3);
+   }
 }
 
 .down-btn {
@@ -37,4 +42,10 @@ button {
    border: none;
    background-color: white;
    background-position: bottom;
+   outline: none;
+
+   &:hover {
+      height: 1.2rem;
+      width: 0.7rem;
+   }
 }

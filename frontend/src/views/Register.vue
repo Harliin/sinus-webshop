@@ -140,6 +140,11 @@ export default {
          font-size: 20px;
          font-weight: 600;
          margin-right: 10%;
+
+         &:hover {
+            background-color: $darkerYellow;
+            box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.3);
+         }
       }
    }
 }

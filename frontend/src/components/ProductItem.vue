@@ -7,7 +7,7 @@
          <button v-if="!adminPage" @click="addToCart" class="icon">
             <img src="@/assets/icon-bag-gray.svg" alt />
          </button>
-         <button v-if="adminPage" @click="editProduct">
+         <button v-if="adminPage" @click="editProduct" class="icon">
             <img src="@/assets/icon-edit-white.svg" alt="did not find" />
          </button>
       </div>
@@ -90,8 +90,8 @@ export default {
       }
 
       .icon {
-         width: 30px;
-         height: 30px;
+         width: 40px;
+         height: 40px;
          border-radius: 50px;
          background-color: $brightYellow;
          border: none;
@@ -100,6 +100,10 @@ export default {
          justify-content: center;
          align-items: center;
 
+         &:hover {
+            background-color: $darkerYellow;
+            box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.4);
+         }
          img {
             width: 20px;
             height: 20px;
