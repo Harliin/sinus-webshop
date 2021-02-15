@@ -35,10 +35,12 @@ export default new Vuex.Store({
       },
       checkLogin(state, data) {
          console.log(data[1]);
+
          if (data[0].status == 200) {
             state.LoggedIn = true;
             state.LoggedInUser = data[1].user;
             sessionStorage.setItem("token", data[1].token);
+            sessionStorage.setItem('user', JSON.stringify(data[1]));
             state.Token = data[1].token;
          } else {
             state.LoggedIn = false;
@@ -65,6 +67,7 @@ export default new Vuex.Store({
       },
       logOut(state) {
          sessionStorage.removeItem("token");
+         sessionStorage.removeItem("user");
          state.LoggedIn = false;
          state.LoggedInUser = {};
       },
@@ -85,6 +88,11 @@ export default new Vuex.Store({
          state.cartModalOpen = !state.cartModalOpen;
          state.loginModalOpen = false;
       },
+      setData(state, data) {
+         state.LoggedInUser = data.user
+         state.Token = data.token
+         state.LoggedIn = true
+      }
    },
    actions: {
       async getProducts(context) {
@@ -118,6 +126,17 @@ export default new Vuex.Store({
          let data = await API.EditProduct(payload.action, payload.user, payload.product)
          console.log(data);
          alert(data[1].message)
+      },
+      async deleteProduct(_context, payload) {
+         let data = await API.DeleteProduct(payload.user, payload.productId)
+         console.log(data);
+         alert(data[1].message)
+      },
+      async checkUser(context) {
+         let user = JSON.parse(sessionStorage.getItem('user'))
+         if (user) {
+            context.commit('setData', user)
+         }
       }
    },
    modules: {},

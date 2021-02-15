@@ -53,9 +53,9 @@
             <textarea type="text" name="name" v-model="overlayProduct.longDesc" />
           </div>
           <div class="buttons">
-            <button>Add</button>
-            <button @click="editProduct('PATCH')">Update</button>
-            <button>Delete</button>
+            <button v-if="newProduct" @click="editProduct('POST')">Add</button>
+            <button v-if="!newProduct" @click="editProduct('PATCH')">Update</button>
+            <button v-if="!newProduct" @click="deleteProduct">Delete</button>
             <button @click="closeModal">Cancel</button>
           </div>
         </div>
@@ -72,7 +72,17 @@ export default {
   data() {
     return {
       overlayOpen: false,
-      overlayProduct: {},
+      overlayProduct: {
+        title: "",
+        shortDesc: "",
+        price: 0,
+        serial: "",
+        imgFile: "skateboard-generic.png",
+        longDesc: "",
+        _id: "",
+      },
+
+      newProduct: false,
     };
   },
   methods: {
@@ -83,8 +93,26 @@ export default {
     },
     closeModal() {
       this.overlayOpen = false;
+      this.overlayProduct = {
+        title: "",
+        shortDesc: "",
+        price: null,
+        serial: "",
+        imgFile: "skateboard-generic.png",
+        longDesc: "",
+        _id: "",
+      };
+    },
+    addProduct() {
+      this.overlayOpen = true;
+      this.newProduct = true;
     },
     async editProduct(Action) {
+      if ((await this.checkForm) == false) {
+        alert("Fill all fields");
+        return;
+      }
+
       let user = this.$store.state.Token;
       let payload = {
         action: Action,
@@ -95,11 +123,36 @@ export default {
       await this.$store.dispatch("getProducts");
       this.overlayOpen = false;
     },
+    async deleteProduct() {
+      let payload = {
+        user: this.$store.state.Token,
+        productId: this.overlayProduct._id,
+      };
+      await this.$store.dispatch("deleteProduct", payload);
+      await this.$store.dispatch("getProducts");
+      this.overlayOpen = false;
+    },
+    async checkForm() {
+      if (
+        this.overlayProduct.title == "" ||
+        this.overlayProduct.shortDesc == "" ||
+        this.overlayProduct.price == null ||
+        this.overlayProduct.serial == "" ||
+        this.overlayProduct.longDesc == ""
+      ) {
+        return false;
+      } else {
+        return true;
+      }
+    },
   },
   computed: {
     Products() {
       return this.$store.state.Products;
     },
+  },
+  async created() {
+    await this.$store.dispatch("getProducts");
   },
 };
 </script>

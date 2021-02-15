@@ -12,11 +12,13 @@ export default {
    components: {
       Header,
    },
+   async created(){
+      this.$store.dispatch('checkUser')
+   }
 };
 </script>
 
 <style lang="scss">
-// @import "@/Styles/style.scss";
 
 #app {
    margin-right: auto;

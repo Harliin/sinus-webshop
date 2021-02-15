@@ -69,4 +69,23 @@ export async function EditProduct(Action, User, Product) {
     }   
 }
 
+export async function DeleteProduct(User, ProductId) {
+    console.log("Deleting product");
+    console.log(User, ProductId);
+    try{
+        let req = await fetch('http://localhost:5000/api/products/' + ProductId, {
+            method: "DELETE",
+            headers: {"Content-Type": "application/json",
+                      "Authorization": `Bearer ${User}`},
+        });
+        let data = await req.json()
+        console.log(data);
+        return [req, data]
+    }
+    catch(ex){
+        console.log(ex);
+    }   
+}
+
+
 

@@ -29,6 +29,7 @@
          >
          <router-link
             class="link"
+            v-if="userAdmin"
             to="/adminproducts"
             @click.native="filterActive(3)"
             :class="{ active: isActive == 3 }"
@@ -62,6 +63,13 @@ export default {
       userLoggedIn() {
          return this.$store.state.LoggedIn;
       },
+      userAdmin(){
+         if (this.$store.state.LoggedInUser.role == "admin") {
+            return true
+         }else{
+            return false
+         }
+      }
    },
    async beforeCreate() {
       await this.$store.getters.loggedIn;
