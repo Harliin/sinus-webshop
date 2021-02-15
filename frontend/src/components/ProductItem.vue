@@ -4,8 +4,11 @@
          <h2 @click="showOverlay" class="product-name">
             {{ productItem.title }}
          </h2>
-         <button @click="addToCart" class="icon">
+         <button v-if="!adminPage" @click="addToCart" class="icon">
             <img src="@/assets/icon-bag-gray.svg" alt />
+         </button>
+         <button v-if="adminPage" @click="editProduct">
+            <img src="@/assets/icon-edit-white.svg" alt="did not find" />
          </button>
       </div>
       <p @click="showOverlay" class="short-desc">{{ productItem.shortDesc }}</p>
@@ -37,6 +40,20 @@ export default {
       addToCart() {
          alert("Added to cart");
          this.$store.dispatch("addToCart", this.productItem);
+      },
+      editProduct() {
+         this.$emit("editProduct", this.productItem);
+      },
+   },
+   computed: {
+      adminPage() {
+         var currentUrl = this.$route;
+         console.log(currentUrl);
+         if (currentUrl.path == "/adminproducts") {
+            return true;
+         } else {
+            return false;
+         }
       },
    },
 };

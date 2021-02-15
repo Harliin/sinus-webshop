@@ -8,7 +8,7 @@
             <p>{{ cartCounter }}</p>
          </div>
       </div>
-      <div v-if="isActive" class="user-cart">
+      <div v-if="cartModalOpen" class="user-cart">
          <span class="arrow"></span>
          <ul>
             <CartItem
@@ -33,17 +33,12 @@
 <script>
 import CartItem from "@/components/CartItem.vue";
 export default {
-   data() {
-      return {
-         isActive: false,
-      };
-   },
    components: {
       CartItem,
    },
    methods: {
       toggleCart() {
-         this.isActive = !this.isActive;
+         this.$store.commit("toggleCart");
       },
       goToCart() {
          if (this.$store.state.LoggedIn) {
@@ -68,6 +63,9 @@ export default {
             total += s.counter;
          }
          return total;
+      },
+      cartModalOpen() {
+         return this.$store.state.cartModalOpen;
       },
    },
 };

@@ -27,6 +27,13 @@
             :class="{ active: isActive == 2 }"
             >My Account</router-link
          >
+         <router-link
+            class="link"
+            to="/adminproducts"
+            @click.native="filterActive(3)"
+            :class="{ active: isActive == 3 }"
+            >Admin Products</router-link
+         >
          <!-- <router-link class="link" to="/cart" @click.native="filterActive(2)" :class="{active: isActive == 2}">Cart</router-link>
         <router-link class="link" to="/orderdone" @click.native="filterActive(3)" :class="{active: isActive == 3}">Order Done</router-link> -->
          <Login v-if="!userLoggedIn" />

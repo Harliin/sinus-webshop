@@ -1,7 +1,7 @@
 <template>
    <div class="login">
-      <a class="link" @click="isOpen = !isOpen">Login</a>
-      <div v-if="isOpen" class="login-form">
+      <a class="link" @click="toggleLoginModal">Login</a>
+      <div v-if="loginModalOpen" class="login-form">
          <span class="arrow"></span>
          <div class="inputs">
             <input
@@ -33,6 +33,11 @@ export default {
          wrongCredentials: false,
       };
    },
+   computed: {
+      loginModalOpen() {
+         return this.$store.state.loginModalOpen;
+      },
+   },
    methods: {
       async login() {
          await this.$store.dispatch("login", {
@@ -44,6 +49,9 @@ export default {
          } else {
             this.wrongCredentials = false;
          }
+      },
+      toggleLoginModal() {
+         this.$store.commit("toggleLogin");
       },
    },
 };
