@@ -10,7 +10,6 @@ export default new Vuex.Store({
       LoggedIn: null,
       LoggedInUser: {},
       Cart: [],
-      totalPrice: 0,
       Token: "",
       loginModalOpen: false,
       cartModalOpen: false,
@@ -40,7 +39,7 @@ export default new Vuex.Store({
             state.LoggedIn = true;
             state.LoggedInUser = data[1].user;
             sessionStorage.setItem("token", data[1].token);
-            sessionStorage.setItem('user', JSON.stringify(data[1]));
+            sessionStorage.setItem("user", JSON.stringify(data[1]));
             state.Token = data[1].token;
          } else {
             state.LoggedIn = false;
@@ -89,10 +88,20 @@ export default new Vuex.Store({
          state.loginModalOpen = false;
       },
       setData(state, data) {
-         state.LoggedInUser = data.user
-         state.Token = data.token
-         state.LoggedIn = true
-      }
+         state.LoggedInUser = data.user;
+         state.Token = data.token;
+         state.LoggedIn = true;
+      },
+      updateProducts(state, data) {
+         let index = state.Products.findIndex(
+            (product) => product._id == data._id
+         );
+         if (index >= 0) {
+            state.Products[index] = data;
+         } else {
+            state.Products.push(data);
+         }
+      },
    },
    actions: {
       async getProducts(context) {
@@ -121,23 +130,32 @@ export default new Vuex.Store({
       async LogOut(context) {
          context.commit("logOut");
       },
-      async editProduct(_context, payload) {
+      async editProduct(context, payload) {
          console.log(payload);
-         let data = await API.EditProduct(payload.action, payload.user, payload.product)
-         console.log(data);
-         alert(data[1].message)
+         let data = await API.EditProduct(
+            payload.action,
+            payload.user,
+            payload.product
+         );
+         if (payload.action == "POST") {
+            context.commit("updateProducts", data[1].product);
+         } else {
+            context.commit("updateProducts", data[1].data);
+         }
+
+         alert(data[1].message);
       },
       async deleteProduct(_context, payload) {
-         let data = await API.DeleteProduct(payload.user, payload.productId)
+         let data = await API.DeleteProduct(payload.user, payload.productId);
          console.log(data);
-         alert(data[1].message)
+         alert(data[1].message);
       },
       async checkUser(context) {
-         let user = JSON.parse(sessionStorage.getItem('user'))
+         let user = JSON.parse(sessionStorage.getItem("user"));
          if (user) {
-            context.commit('setData', user)
+            context.commit("setData", user);
          }
-      }
+      },
    },
    modules: {},
    getters: {
@@ -151,6 +169,12 @@ export default new Vuex.Store({
             state.LoggedIn = false;
             return false;
          }
+      },
+      totalPrice(state) {
+         return state.Cart.reduce(
+            (acc, item) => item.price * item.counter + acc,
+            0
+         );
       },
 
       getUser: (state) => {
