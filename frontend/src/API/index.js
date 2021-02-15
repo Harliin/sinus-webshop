@@ -47,9 +47,26 @@ export async function SendOrder(Order) {
     }
     catch(ex){
         console.log(ex);
-    }
-    
-    
-    
+    }   
 }
+
+export async function EditProduct(Action, User, Product) {
+    console.log("Api sending order");
+    console.log(Action, User, Product);
+    try{
+        let req = await fetch('http://localhost:5000/api/products/' + Product._id, {
+            method: Action,
+            headers: {"Content-Type": "application/json",
+                      "Authorization": `Bearer ${User}`},
+            body: JSON.stringify(Product)
+        });
+        let data = await req.json()
+        console.log(data);
+        return [req, data]
+    }
+    catch(ex){
+        console.log(ex);
+    }   
+}
+
 
