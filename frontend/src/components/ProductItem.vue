@@ -103,7 +103,7 @@ export default {
 
          &:hover {
             background-color: $darkerYellow;
-            box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.3);
          }
          img {
             width: 20px;
