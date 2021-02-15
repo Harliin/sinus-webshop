@@ -113,6 +113,12 @@ export default new Vuex.Store({
       async LogOut(context) {
          context.commit("logOut");
       },
+      async editProduct(_context, payload) {
+         console.log(payload);
+         let data = await API.EditProduct(payload.action, payload.user, payload.product)
+         console.log(data);
+         alert(data[1].message)
+      }
    },
    modules: {},
    getters: {

@@ -48,7 +48,6 @@ export default {
    computed: {
       adminPage() {
          var currentUrl = this.$route;
-         console.log(currentUrl);
          if (currentUrl.path == "/adminproducts") {
             return true;
          } else {
