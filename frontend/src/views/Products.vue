@@ -1,11 +1,11 @@
 <template>
   <div class="products">
     <ProductItem v-for="item in Products" :key="item._id" :productItem="item" @open="showOverlay" />
-    <transition>
+
       <div v-if="snackbarActive">
         <Snackbar />
       </div>
-    </transition>
+
     <div v-if="overlayOpen">
       <Overlay :show="showModal" @close="closeModal">
         <div class="modal-overlay">

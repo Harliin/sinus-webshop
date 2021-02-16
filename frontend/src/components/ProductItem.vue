@@ -1,10 +1,10 @@
 <template>
   <div class="product-container">
-    <transition>
+
       <div v-if="snackbarActive">
         <Snackbar />
       </div>
-    </transition>
+
     <div class="header">
       <h2 @click="showOverlay" class="product-name">{{ productItem.title }}</h2>
       <button v-if="!adminPage" @click="addToCart" class="icon">
