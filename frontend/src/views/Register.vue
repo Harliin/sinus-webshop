@@ -53,8 +53,14 @@ export default {
             email: this.Email,
             password: this.Password,
             repeatPassword: this.Password,
+            adress: {
+               street: 'Strandvägen 1',
+               zip: '123 45',
+               city: 'Stockholm'
+            }
          });
          this.resetForm();
+         this.$router.push("/");
       },
       resetForm() {
          this.Name = "";

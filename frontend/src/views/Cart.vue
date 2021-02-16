@@ -106,7 +106,7 @@
                </section>
             </div>
          </div>
-         <button class="buy-btn" @click="sendOrder">
+         <button class="buy-btn" @click="sendOrder" :class="{active : cartItems.length <= 0}">
             <img src="@/assets/icon-bag-white.svg" /> Take my money!
          </button>
       </div>
@@ -374,6 +374,11 @@ export default {
          align-self: flex-end;
          margin-top: 2rem;
          width: 45%;
+      }
+      .active{
+            pointer-events: none;
+            background-color: $mainGray;
+            color: white;
       }
    }
 }

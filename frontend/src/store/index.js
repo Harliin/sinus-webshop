@@ -114,8 +114,7 @@ export default new Vuex.Store({
          context.commit("checkLogin", data);
       },
       async register(_, payload) {
-         let data = await API.Register(payload);
-         alert(data);
+         await API.Register(payload);
       },
       async addToCart(context, payload) {
          console.log(payload);
@@ -161,15 +160,10 @@ export default new Vuex.Store({
    modules: {},
    getters: {
       loggedIn: (state) => {
-         let token = sessionStorage.getItem("token");
-         if (token) {
-            state.LoggedIn = true;
-            state.Token = token;
-            return true;
-         } else {
-            state.LoggedIn = false;
-            return false;
+         if(state.LoggedInUser.role == "customer" || state.LoggedInUser.role == "admin"){
+            return true
          }
+         else return false
       },
       checkIfAdmin: (state) => {
          if(state.LoggedInUser.role == "admin")return true

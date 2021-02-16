@@ -1,5 +1,5 @@
 <template>
-  <div class="orderDone">
+  <div class="orderDone" :class="$mq">
     <div class="hero">
       <h1>Thank you!</h1>
     </div>
@@ -29,6 +29,11 @@ export default {
   width: 100%;
   height: 90vh;
   padding-bottom: 2rem;
+
+  &.smallDesktop, &.laptop{
+    grid-template-rows: 50% 50%;
+    height: 110vh;
+  }
 
   .hero {
     grid-row: 1 / 2;

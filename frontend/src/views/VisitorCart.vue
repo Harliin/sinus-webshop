@@ -95,8 +95,8 @@
                         <input name="cvv" type="text" placeholder="CVV" />
                      </section>
                   </div>
-                  <button class="submit-btn" :class="$mq" @click="sendOrder">
-                     Submit Order
+                  <button class="submit-btn"  @click="sendOrder" :class="{active : cartItems.length <= 0 , $mq}">
+                     Take my money!
                   </button>
                </div>
             </div>
@@ -297,9 +297,16 @@ export default {
       margin-top: 2rem;
       width: 45%;
 
+
+
       &.smallDesktop, &.laptop{
          align-self: center;
       }
+   }
+   .active{
+      pointer-events: none;
+      background-color: $mainGray;
+      color: white;
    }
 }
 </style>
