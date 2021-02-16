@@ -60,6 +60,7 @@ export default {
             }
          });
          this.resetForm();
+         alert("Account created! Log in to see your account details.")
          this.$router.push("/");
       },
       resetForm() {
