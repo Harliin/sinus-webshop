@@ -1,10 +1,8 @@
 <template>
    <div class="product-container">
-      <transition>
-         <div v-if="snackbarActive">
-            <Snackbar />
-         </div>
-      </transition>
+      <div v-if="snackbarActive">
+         <Snackbar />
+      </div>
       <div class="header">
          <h2 @click="showOverlay" class="product-name">
             {{ productItem.title }}

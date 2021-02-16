@@ -6,11 +6,11 @@
          :productItem="item"
          @open="showOverlay"
       />
-      <transition>
-         <div v-if="snackbarActive">
-            <Snackbar />
-         </div>
-      </transition>
+
+      <div v-if="snackbarActive">
+         <Snackbar />
+      </div>
+
       <div v-if="overlayOpen">
          <Overlay :show="showModal" @close="closeModal">
             <div class="modal-overlay">
