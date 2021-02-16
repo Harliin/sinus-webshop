@@ -10,7 +10,7 @@ export default {};
 
 <style lang="scss" scoped>
 .snackbar {
-   position: absolute;
+   position: fixed;
    background-color: $mainGray;
    color: $gold;
    border-radius: 5px;

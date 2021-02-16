@@ -4,6 +4,7 @@
       <div
          v-if="loginModalOpen"
          class="login-form counter animate__animated animate__zoomInDown"
+         :class="$mq"
       >
          <span class="arrow"></span>
          <div class="inputs">

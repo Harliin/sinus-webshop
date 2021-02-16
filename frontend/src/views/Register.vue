@@ -1,9 +1,9 @@
 <template>
-   <div class="register">
-      <div class="register-img">
+   <div class="register" :class="$mq">
+      <div class="register-img" :class="$mq">
          <h1>Join the rolling family!</h1>
       </div>
-      <div class="information">
+      <div class="information" :class="$mq">
          <h4>Cowabunga</h4>
          <p>
             <b
@@ -24,7 +24,7 @@
             snake. Chris Buchinsky skater 1080 casper nosebone street.
          </p>
       </div>
-      <div class="register-form">
+      <div class="register-form" :class="$mq">
          <h4>Register</h4>
          <label for="name">Name</label>
          <input v-model="Name" name="name" type="text" />
@@ -79,6 +79,11 @@ export default {
    height: 90vh;
    padding-bottom: 2rem;
 
+   &.laptop {
+      grid-template-columns: 100%;
+      grid-template-rows: 30% 30% 30%;
+      height: 120vh;
+   }
    .register-img {
       grid-column: 1 / 3;
       grid-row: 1 / 2;
@@ -95,6 +100,11 @@ export default {
          color: white;
          font-size: 60px;
       }
+
+      &.laptop {
+         grid-column: 1/2;
+         grid-row: 1/2;
+      }
    }
 
    .information {
@@ -105,6 +115,11 @@ export default {
       text-align: left;
       justify-content: space-evenly;
       padding-right: 1rem;
+
+      &.laptop {
+         grid-column: 1/2;
+         grid-row: 3/4;
+      }
    }
 
    .register-form {
@@ -116,6 +131,15 @@ export default {
       align-items: flex-start;
       padding-left: 2rem;
       padding-top: 1rem;
+
+      &.laptop {
+         grid-column: 1/2;
+         grid-row: 2/3;
+
+         button {
+            align-self: center;
+         }
+      }
 
       input {
          width: 90%;

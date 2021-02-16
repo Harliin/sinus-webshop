@@ -1,11 +1,11 @@
 <template>
   <div class="account">
-    <div class="account-details">
-      <section class="image"></section>
+    <div class="account-details" :class="$mq">
+      <section class="image" :class="$mq"></section>
 
-      <button @click="edit = !edit" class="edit">Edit</button>
+      <button @click="edit = !edit" class="edit" :class="$mq">Edit</button>
 
-      <section class="form name">
+      <section class="form name" :class="$mq">
         <label for="name">Name</label>
         <input type="text" :class="{active : edit}" v-model="user.name" name="name" />
 
@@ -13,7 +13,7 @@
         <input type="text" :class="{active : edit}" v-model="user.email" name="email" />
       </section>
 
-      <section class="form adress">
+      <section class="form adress" :class="$mq">
         <label for="adress">Street adress</label>
         <input type="text" :class="{active : edit}" v-model="user.adress.street" name="adress" />
 
@@ -29,7 +29,7 @@
           </section>
         </div>
       </section>
-      <div class="order-history">
+      <div class="order-history" :class="$mq">
         <h3>Order history</h3>
         <ul>
           <li
@@ -39,7 +39,7 @@
           >Order {{index +1}}: {{order}}</li>
         </ul>
       </div>
-      <button @click="logOut" class="log-out">Log out</button>
+      <button @click="logOut" class="log-out" :class="$mq">Log out</button>
     </div>
   </div>
 </template>
@@ -80,7 +80,7 @@ export default {
     grid-row: 2/3;
     width: 100%;
     height: 90%;
-    background-color: lightgray;
+    background-color: whitesmoke;
     box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.7);
     border-radius: 10px;
     display: grid;
@@ -89,8 +89,12 @@ export default {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 40% 45% 15%;
 
+    &.smallDesktop, &.laptop{
+      grid-template-rows: 30% 30% 30% 10%;
+    }
+
     .image {
-      grid-column: 1 /3;
+      grid-column: 1/3;
       grid-row: 1/2;
       background-image: url(../assets/icon-user-black.svg);
       background-size: contain;
@@ -102,6 +106,21 @@ export default {
       background-color: white;
       box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.3);
       place-self: center;
+
+      &.smallDesktop, &.laptop{
+        grid-column: 1/5;
+        grid-row: 1/2;
+        width: 150px;
+        height: 150px;
+        margin-bottom: 15px;
+      }
+      // &.laptop{
+      //   grid-column: 1/5;
+      //   grid-row: 1/2;
+      //   width: 150px;
+      //   height: 150px;
+      //   margin-bottom: 15px;
+      // }
     }
 
     .edit {
@@ -115,16 +134,35 @@ export default {
       background-color: $mainGray;
       color: $brightYellow;
       font-weight: 400;
+
+      &.smallDesktop, &.laptop{
+        grid-column: 1/5;
+        grid-row: 1/2;
+        place-self: bottom;
+        justify-self: center;
+         margin-right: 0rem;
+      }
+      
     }
 
     .name {
       grid-row: 2/3;
       grid-column: 1/2;
+
+      &.smallDesktop, &.laptop{
+        grid-column: 1/3;
+        grid-row: 2/3;
+      }
     }
 
     .adress {
       grid-row: 2/3;
       grid-column: 2/3;
+
+      &.smallDesktop, &.laptop{
+        grid-column: 3/5;
+        grid-row: 2/3;
+      }
     }
     .form {
       display: flex;
@@ -133,6 +171,19 @@ export default {
       width: 100%;
       height: 100%;
       padding: 1rem;
+
+      &.smallDesktop, &.laptop{
+        width: 80%;
+        height: 80%;
+        padding: 1.5rem;
+
+        label{
+          margin-top: 0rem;
+        }
+        input{
+          margin-bottom: 1rem;
+        }
+      }
 
       .active {
         border: 2px solid $brightYellow;
@@ -178,7 +229,7 @@ export default {
       grid-row: 1/3;
       display: flex;
       flex-direction: column;
-      background-color: whitesmoke;
+      background-color: white;
       color: $mainGray;
       align-items: flex-start;
       justify-content: flex-start;
@@ -187,6 +238,14 @@ export default {
       height: 90%;
       margin-top: 5rem;
       border-radius: 10px;
+
+      &.smallDesktop, &.laptop{
+      grid-column: 1/5;
+      grid-row: 3/4;
+      margin-top: 0px;
+      width: 90%;
+      
+      }
 
       h3 {
         margin-left: 1rem;
@@ -214,6 +273,11 @@ export default {
       place-self: center;
       background-color: #F56969;;
       box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.3);
+
+      &.smallDesktop, &.laptop{
+        grid-column: 1/5;
+        grid-row: 4/5;
+      }
     }
   }
 }

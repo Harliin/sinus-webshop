@@ -3,7 +3,8 @@
       <div class="image-container">
          <!-- <img src="../../../assets/sinus-logo.svg" alt="kunde inte hitta"> -->
       </div>
-      <div class="routes-container">
+      {{ $mq }}
+      <div class="routes-container " :class="$mq">
          <router-link
             class="link"
             to="/"
@@ -98,6 +99,13 @@ export default {
       display: flex;
       justify-content: space-evenly;
       align-items: center;
+
+      &.laptop {
+         width: 45vw;
+      }
+      &.smallDesktop {
+         width: 35vw;
+      }
 
       .link {
          text-decoration: none;

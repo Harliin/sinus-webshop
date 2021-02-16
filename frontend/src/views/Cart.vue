@@ -1,12 +1,12 @@
 <template>
-   <div class="cart">
+   <div class="cart" :class="$mq">
       <h1>Your Cart</h1>
-      <div class="items">
+      <div class="items" :class="$mq">
          <header>
             <h4>ITEMS</h4>
             <span class="line"></span>
          </header>
-         <div class="user-cart">
+         <div class="user-cart" :class="$mq">
             <ul>
                <CartItem
                   v-for="(cartItem, index) of cartItems"
@@ -21,12 +21,12 @@
             </div>
          </div>
       </div>
-      <div class="delivery">
+      <div class="delivery" :class="$mq">
          <header>
             <h4>DELIVERY</h4>
             <span class="line"></span>
          </header>
-         <div class="delivery-form">
+         <div class="delivery-form" :class="$mq">
             <label for="name">Name</label>
             <input
                name="name"
@@ -42,7 +42,7 @@
                placeholder="Street Adress"
                v-model="user.adress.street"
             />
-            <div class="area">
+            <div class="area" :class="$mq">
                <section>
                   <label for="city">City</label>
                   <input
@@ -64,12 +64,12 @@
             </div>
          </div>
       </div>
-      <div class="payment-details">
+      <div class="payment-details" :class="$mq">
          <header>
             <h4>PAYMENT_DETAILS</h4>
             <span class="line"></span>
          </header>
-         <div class="payment-form">
+         <div class="payment-form" :class="$mq">
             <label for="card-owner">Card owner</label>
             <input
                name="card-owner"
@@ -85,7 +85,7 @@
                placeholder="Card Number"
                v-model="cardNumber"
             />
-            <div class="area">
+            <div class="area" :class="$mq">
                <section>
                   <label for="valid">Valid until</label>
                   <input
@@ -178,6 +178,12 @@ export default {
    justify-content: center;
    align-items: center;
 
+   &.smallDesktop, &.laptop{
+      grid-template-columns: 50% 50%;
+      grid-template-rows: 40% 60%;
+      height: 100%;
+   }
+
    header {
       width: 100%;
       display: flex;
@@ -211,14 +217,26 @@ export default {
       grid-row: 2/3;
       padding: 1rem;
 
+      &.smallDesktop, &.laptop{
+         grid-column: 1/3;
+         grid-row: 1/2;
+         margin-bottom: 3rem;
+      }
+
       .user-cart {
          background-color: white;
          width: 100%;
+         min-width: 20rem;
          height: 37rem;
          border-radius: 5px;
          box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.1);
          display: flex;
          flex-direction: column;
+
+         &.smallDesktop, &.laptop{
+            width: 100%;
+            height: 100%;
+         }
       }
       ul {
          list-style: none;
@@ -267,6 +285,11 @@ export default {
       grid-row: 2/3;
       padding: 1rem;
       padding-left: 2rem;
+
+      &.smallDesktop, &.laptop{
+         grid-column: 1/2;
+         grid-row: 2/3;
+      }
    }
    .delivery-form,
    .payment-form {
@@ -277,6 +300,18 @@ export default {
       text-align: left;
       width: fill;
 
+      &.smallDesktop{
+         input{
+            padding: 0.7rem;
+            font-size: 15px;
+         }
+      }
+      &.laptop{
+         input{
+            padding: 0.4rem;
+            
+         }
+      }
       label {
          align-self: flex-start;
          margin-top: 2rem;
@@ -299,6 +334,13 @@ export default {
          justify-content: space-between;
          align-items: center;
          width: 100%;
+
+         &.smallDesktop, &.laptop{
+            width: 100%;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: flex-start;
+         }
       }
    }
    .payment-details {
@@ -312,6 +354,16 @@ export default {
       grid-row: 2/3;
       padding: 1rem;
       padding-left: 2rem;
+
+      &.smallDesktop, &.laptop{
+         grid-column: 2/3;
+         grid-row: 2/3;
+
+         .buy-btn{
+            align-self: flex-start;
+            margin-left: -9rem;
+         }
+      }
 
       .buy-btn {
          align-self: flex-end;

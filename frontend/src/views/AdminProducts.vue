@@ -14,15 +14,16 @@
       </div>
       <div v-if="overlayOpen" class="overlay-modal">
          <Overlay :show="overlayOpen">
-            <div class="modal-overlay">
+            <div class="modal-overlay" :class="$mq">
                <div
                   class="product-img"
+                  :class="$mq"
                   v-bind:style="{
                      'background-image': `url(${require('@/assets/' +
                         `${overlayProduct.imgFile}`)})`,
                   }"
                ></div>
-               <div class="product-details">
+               <div class="product-details" :class="$mq">
                   <label for="name">Product name</label>
                   <input
                      type="text"
@@ -66,7 +67,7 @@
                      <option value="wheel-wave.png">Wheel Wave</option>
                   </select>
                </div>
-               <div class="product-desc">
+               <div class="product-desc" :class="$mq">
                   <label for>Product description</label>
                   <textarea
                      type="text"
@@ -74,7 +75,7 @@
                      v-model="overlayProduct.longDesc"
                   />
                </div>
-               <div class="buttons">
+               <div class="buttons" :class="$mq">
                   <button v-if="newProduct" @click="editProduct('POST')">
                      Add
                   </button>
@@ -230,13 +231,26 @@ export default {
 
    .modal-overlay {
       width: 1300px;
-      height: 700px;
+      height: 750px;
       background-color: whitesmoke;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: 85% 15%;
       box-shadow: 0px 0px 36px rgba(0, 0, 0, 0.3);
       border-radius: 10px;
+      padding: 4px;
+
+      &.smallDesktop {
+         width: 1000px;
+         height: 500px;
+      }
+      &.laptop {
+         width: 800px;
+         height: 700px;
+         grid-template-columns: 50% 50%;
+         grid-template-rows: 30% 45% 25%;
+      }
+
       .product-img {
          height: 100%;
          width: 100%;
@@ -244,6 +258,11 @@ export default {
          background-position: bottom center;
          background-size: contain;
          background-repeat: no-repeat;
+
+         &.laptop {
+            grid-column: 1/3;
+            grid-row: 1/2;
+         }
       }
       .product-details {
          grid-column: 2/3;
@@ -251,6 +270,29 @@ export default {
          display: flex;
          flex-direction: column;
          justify-content: space-evenly;
+
+         &.smallDesktop {
+            input {
+               padding: 0.5rem;
+            }
+            select {
+               padding: 0.5rem;
+            }
+         }
+         &.laptop {
+            grid-column: 1/2;
+            grid-row: 2/3;
+
+            label {
+               margin-bottom: -10px;
+            }
+            input {
+               padding: 0.3rem;
+            }
+            select {
+               padding: 0.3rem;
+            }
+         }
 
          label {
             align-self: flex-start;
@@ -282,6 +324,11 @@ export default {
          padding: 1rem;
          padding-top: 2rem;
 
+         &.laptop {
+            grid-column: 2/3;
+            grid-row: 2/3;
+         }
+
          label {
             align-self: flex-start;
             margin-bottom: 0.8rem;
@@ -306,6 +353,11 @@ export default {
          flex-direction: row;
          justify-content: space-evenly;
          align-items: center;
+
+         &.laptop {
+            grid-column: 1/3;
+            grid-row: 3/4;
+         }
 
          .delete-btn {
             background-color: #f56969;
