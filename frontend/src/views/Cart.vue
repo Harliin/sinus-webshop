@@ -144,7 +144,7 @@ export default {
          return ids;
       },
       totalPrice() {
-         return this.$store.state.totalPrice;
+         return this.$store.getters.totalPrice;
       },
    },
    methods: {

@@ -69,6 +69,7 @@ export default new Vuex.Store({
          sessionStorage.removeItem("user");
          state.LoggedIn = false;
          state.LoggedInUser = {};
+        
       },
       resetCart(state, data) {
          if (data[0].status == 200) {

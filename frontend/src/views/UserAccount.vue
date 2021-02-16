@@ -59,6 +59,8 @@ export default {
     logOut() {
       this.$store.dispatch("LogOut");
       this.$router.push("/");
+      this.$store.state.Cart = [];
+      this.$store.state.totalPrice = 0;
     },
   },
 };
@@ -186,15 +188,16 @@ export default {
       margin-top: 5rem;
       border-radius: 10px;
 
-      h3{
-         margin-left: 1rem;
-         color: $mainGray;
+      h3 {
+        margin-left: 1rem;
+        color: $mainGray;
       }
 
       ul {
         list-style: none;
         height: 80%;
         overflow: auto;
+        width: 100%;
 
         .list-item {
           margin-left: 1rem;
