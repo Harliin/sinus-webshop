@@ -63,13 +63,13 @@ export default {
       userLoggedIn() {
          return this.$store.state.LoggedIn;
       },
-      userAdmin(){
+      userAdmin() {
          if (this.$store.state.LoggedInUser.role == "admin") {
-            return true
-         }else{
-            return false
+            return true;
+         } else {
+            return false;
          }
-      }
+      },
    },
    async beforeCreate() {
       await this.$store.getters.loggedIn;

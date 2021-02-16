@@ -4,11 +4,17 @@
          <button @click="toggleCart" class="cart-button">
             <img src="~@/assets/icon-bag-gray.svg" alt="kunde inte hitta" />
          </button>
-         <div v-if="cartCounter > 0" class="counter">
+         <div
+            v-if="cartCounter > 0"
+            class="counter animate__animated animate__bounceIn"
+         >
             <p>{{ cartCounter }}</p>
          </div>
       </div>
-      <div v-if="cartModalOpen" class="user-cart">
+      <div
+         v-if="cartModalOpen"
+         class="user-cart animate__animated animate__zoomInDown"
+      >
          <span class="arrow"></span>
          <ul>
             <CartItem
@@ -118,6 +124,9 @@ export default {
       }
    }
 
+   .animate__animated.animate__zoomInDown {
+      --animate-duration: 0.7s;
+   }
    .user-cart {
       background-color: white;
       position: absolute;

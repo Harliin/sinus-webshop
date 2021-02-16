@@ -148,6 +148,7 @@ export default {
          //  await this.$store.dispatch("getProducts");
          await this.resetProduct();
          this.overlayOpen = false;
+         this.newProduct = false;
       },
       async deleteProduct() {
          let payload = {

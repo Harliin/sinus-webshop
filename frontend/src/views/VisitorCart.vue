@@ -124,7 +124,7 @@ export default {
          return this.$store.state.Cart;
       },
       totalPrice() {
-         return this.$store.state.totalPrice;
+         return this.$store.getters.totalPrice;
       },
       cartItemId() {
          let ids = [];

@@ -1,7 +1,10 @@
 <template>
    <div class="login">
       <a class="link" @click="toggleLoginModal">Login</a>
-      <div v-if="loginModalOpen" class="login-form">
+      <div
+         v-if="loginModalOpen"
+         class="login-form counter animate__animated animate__zoomInDown"
+      >
          <span class="arrow"></span>
          <div class="inputs">
             <input
@@ -72,7 +75,9 @@ export default {
       font-weight: 600;
       cursor: pointer;
    }
-
+   .animate__animated.animate__zoomInDown {
+      --animate-duration: 0.7s;
+   }
    .login-form {
       background-color: white;
       position: absolute;
