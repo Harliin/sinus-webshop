@@ -63,6 +63,11 @@ export default {
       this.$store.state.totalPrice = 0;
     },
   },
+  async beforeCreate() {
+      if (!await this.$store.getters.loggedIn) {
+         await this.$router.push("/");
+      }
+   },
 };
 </script>
 

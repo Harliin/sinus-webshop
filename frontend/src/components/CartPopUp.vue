@@ -92,12 +92,16 @@ export default {
       width: 30px;
       height: 30px;
       border-radius: 50px;
-      background-color: $gold;
+      background-color: $brightYellow;
       display: flex;
       justify-content: center;
       align-items: center;
       border: none;
       outline: none;
+
+      &:hover{
+         background-color: $darkerYellow;
+      }
 
       img {
          width: 20px;

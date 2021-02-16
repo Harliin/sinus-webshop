@@ -171,6 +171,10 @@ export default new Vuex.Store({
             return false;
          }
       },
+      checkIfAdmin: (state) => {
+         if(state.LoggedInUser.role == "admin")return true
+         else return false
+      },
       totalPrice(state) {
          return state.Cart.reduce(
             (acc, item) => item.price * item.counter + acc,

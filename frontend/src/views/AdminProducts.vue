@@ -190,6 +190,11 @@ export default {
          return this.$store.state.Products;
       },
    },
+   async beforeCreate() {
+      if (!await this.$store.getters.checkIfAdmin) {
+         await this.$router.push("/");
+      }
+   },
    async created() {
       await this.$store.dispatch("getProducts");
    },

@@ -3,7 +3,6 @@
       <div class="image-container">
          <!-- <img src="../../../assets/sinus-logo.svg" alt="kunde inte hitta"> -->
       </div>
-      {{ $mq }}
       <div class="routes-container " :class="$mq">
          <router-link
             class="link"

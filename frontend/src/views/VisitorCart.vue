@@ -1,8 +1,8 @@
 <template>
-   <div class="visitor-cart">
-      <div>
+   <div class="visitor-cart" :class="$mq">
+      <div :class="$mq">
          <h3>Your order</h3>
-         <div class="items">
+         <div class="items" :class="$mq">
             <ul>
                <CartItem
                   v-for="(cartItem, index) of cartItems"
@@ -20,9 +20,9 @@
          </div>
       </div>
 
-      <div>
-         <h3>Your details</h3>
-         <div class="customer-details">
+      <div :class="$mq">
+         <h3 class="your-details" :class="$mq">Your details</h3>
+         <div class="customer-details" :class="$mq">
             <div class="delivery">
                <header></header>
                <div class="delivery-form">
@@ -63,7 +63,7 @@
                   </div>
                </div>
             </div>
-            <div class="payment-details">
+            <div class="payment-details" :class="$mq">
                <header>
                   <h3 class="payment">Payment</h3>
                </header>
@@ -95,7 +95,7 @@
                         <input name="cvv" type="text" placeholder="CVV" />
                      </section>
                   </div>
-                  <button class="submit-btn" @click="sendOrder">
+                  <button class="submit-btn" :class="$mq" @click="sendOrder">
                      Submit Order
                   </button>
                </div>
@@ -172,6 +172,11 @@ export default {
    padding: 5rem;
    padding-bottom: 13rem;
 
+   &.smallDesktop, &.laptop{
+      grid-template-columns: 100%;
+      grid-template-rows: 40% 60%;
+   }
+
    h3 {
       text-align: left;
       padding-bottom: 1rem;
@@ -191,6 +196,10 @@ export default {
       box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.1);
       border-radius: 5px;
 
+      &.smallDesktop, &.laptop{
+         width: 100%;
+      }
+
       ul {
          list-style: none;
          padding: 1rem;
@@ -206,6 +215,11 @@ export default {
          margin: 0.5rem 0.5rem 2.5rem 0.5rem;
       }
    }
+   .your-details{
+      &.smallDesktop, &.laptop{
+         margin-top: 1rem;
+      }
+   }
 
    .customer-details {
       width: 90%;
@@ -215,6 +229,13 @@ export default {
       justify-content: flex-start;
       align-items: center;
       grid-column: 2/3;
+
+      &.smallDesktop, &.laptop{
+         width: 100%;
+         h3{
+         margin-top: 1rem;
+         }
+      }
 
       .delivery {
          width: 100%;
@@ -260,6 +281,10 @@ export default {
          width: 100%;
          height: 100%;
 
+         &.smallDesktop, &.laptop{
+         width: 100%;
+         }
+
          h3 {
             padding-top: 1rem;
             padding-bottom: 0.5px;
@@ -271,6 +296,10 @@ export default {
       align-self: flex-end;
       margin-top: 2rem;
       width: 45%;
+
+      &.smallDesktop, &.laptop{
+         align-self: center;
+      }
    }
 }
 </style>
