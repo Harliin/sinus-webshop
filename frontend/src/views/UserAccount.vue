@@ -212,7 +212,7 @@ export default {
       grid-row: 3/4;
       grid-column: 2/4;
       place-self: center;
-      background-color: $darkerYellow;
+      background-color: #F56969;;
       box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.3);
     }
   }
