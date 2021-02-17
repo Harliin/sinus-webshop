@@ -48,6 +48,10 @@ export default {
    },
    methods: {
       async signUp() {
+         if(this.Name === "" || this.Email === "" || this.Password === ""){
+            alert("fill all the fields")
+            return
+         }
          await this.$store.dispatch("register", {
             name: this.Name,
             email: this.Email,
