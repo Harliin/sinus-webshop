@@ -44,6 +44,10 @@ export default {
    },
    methods: {
       async login() {
+         if(this.email == " " || this.password == " "){
+            this.wrongCredentials = true
+            return
+         }
          await this.$store.dispatch("login", {
             email: this.email,
             password: this.password,
