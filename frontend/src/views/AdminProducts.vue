@@ -14,7 +14,7 @@
     </div>
     <div v-if="snackbarActive">
       <Snackbar>
-        <p>Update successfully completed</p>
+        <p>{{message}}</p>
       </Snackbar>
     </div>
     <div v-if="overlayOpen" class="overlay-modal">
@@ -57,9 +57,9 @@
             <textarea type="text" name="name" v-model="overlayProduct.longDesc" />
           </div>
           <div class="buttons" :class="$mq">
-            <button v-if="newProduct" @click="editProduct('POST')">Add</button>
-            <button v-if="!newProduct" @click="editProduct('PATCH')">Update</button>
-            <button class="delete-btn" v-if="!newProduct" @click="deleteProduct">Delete</button>
+            <button v-if="newProduct" @click="editProduct('POST', 'New item added')">Add</button>
+            <button v-if="!newProduct" @click="editProduct('PATCH', 'Update successfully completed')">Update</button>
+            <button class="delete-btn" v-if="!newProduct" @click="deleteProduct('Item removed')">Delete</button>
             <button @click="closeModal">Cancel</button>
           </div>
         </div>
@@ -78,6 +78,7 @@ export default {
     return {
       overlayOpen: false,
       snackbarActive: false,
+      message: "",
       overlayProduct: {
         title: "",
         shortDesc: "",
@@ -93,7 +94,6 @@ export default {
   },
   methods: {
     openModal(item) {
-      console.log("opening overlay");
       this.overlayOpen = true;
       this.overlayProduct = { ...item };
     },
@@ -106,7 +106,7 @@ export default {
       this.overlayOpen = true;
       this.newProduct = true;
     },
-    async editProduct(Action) {
+    async editProduct(Action, message) {
       if ((await this.checkForm) == false) {
         alert("Fill all fields");
         return;
@@ -119,22 +119,27 @@ export default {
         product: this.overlayProduct,
       };
       await this.$store.dispatch("editProduct", payload);
-      this.snackbarActive = true;
-      setTimeout(() => {
-        this.snackbarActive = false;
-      }, 3000);
+      this.showSnackbar(message)
       await this.resetProduct();
       this.overlayOpen = false;
       this.newProduct = false;
     },
-    async deleteProduct() {
+    async deleteProduct(message) {
       let payload = {
         user: this.$store.state.Token,
         productId: this.overlayProduct._id,
       };
       await this.$store.dispatch("deleteProduct", payload);
+      this.showSnackbar(message)
       await this.$store.dispatch("getProducts");
       this.overlayOpen = false;
+    },
+    showSnackbar(message) {
+      this.snackbarActive = true;
+      this.message = message;
+      setTimeout(() => {
+        this.snackbarActive = false;
+      }, 3000);
     },
     async checkForm() {
       if (

@@ -1,7 +1,6 @@
 <template>
    <header class="nav">
-      <div class="image-container">
-         <!-- <img src="../../../assets/sinus-logo.svg" alt="kunde inte hitta"> -->
+      <div class="image-container" @click="goHome">
       </div>
       <div class="routes-container " :class="$mq">
          <router-link
@@ -35,8 +34,6 @@
             :class="{ active: isActive == 3 }"
             >Admin Products</router-link
          >
-         <!-- <router-link class="link" to="/cart" @click.native="filterActive(2)" :class="{active: isActive == 2}">Cart</router-link>
-        <router-link class="link" to="/orderdone" @click.native="filterActive(3)" :class="{active: isActive == 3}">Order Done</router-link> -->
          <Login v-if="!userLoggedIn" />
          <Cart />
       </div>
@@ -55,9 +52,11 @@ export default {
    },
    methods: {
       filterActive(value) {
-         console.log("helloo");
          this.isActive = value;
       },
+      goHome(){
+            this.$router.push("/");
+      }
    },
    computed: {
       userLoggedIn() {
@@ -85,12 +84,13 @@ export default {
    height: 60px;
 
    .image-container {
-      width: 110px;
-      height: 80px;
+      width: 150px;
+      height: 120px;
       background-image: url("../assets/sinus-logo.svg");
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
+      cursor: pointer;
    }
 
    .routes-container {

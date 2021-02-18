@@ -45,8 +45,6 @@ export default new Vuex.Store({
       },
       addItemToCart(state, item) {
          let productIndex = state.Cart.findIndex((o) => o._id == item._id);
-         state.totalPrice += item.price;
-         console.log(state.totalPrice);
          if (productIndex != -1) {
             state.Cart[productIndex].counter++;
          } else {
@@ -55,7 +53,6 @@ export default new Vuex.Store({
       },
       decrementItem(state, item) {
          let index = state.Cart.findIndex((i) => i._id == item);
-         state.totalPrice -= state.Cart[index].price;
          if (state.Cart[index].counter <= 1) {
             state.Cart.splice(index, 1);
          } else {
@@ -140,8 +137,7 @@ export default new Vuex.Store({
 
       },
       async deleteProduct(_context, payload) {
-         let data = await API.DeleteProduct(payload.user, payload.productId);
-         alert(data[1].message);
+       await API.DeleteProduct(payload.user, payload.productId);
       },
       async checkUser(context) {
          let user = JSON.parse(sessionStorage.getItem("user"));

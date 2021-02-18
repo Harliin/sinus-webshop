@@ -142,7 +142,6 @@ export default {
    },
    methods: {
       sendOrder() {
-         console.log("sending order");
          if (
             this.name == "" ||
             this.street == "" ||

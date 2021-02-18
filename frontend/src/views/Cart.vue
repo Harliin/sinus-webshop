@@ -149,12 +149,6 @@ export default {
    },
    methods: {
       sendOrder() {
-         console.log("sending order");
-         // if(this.cardOwner == "" || this.cardNumber == "" || this.validUntil == "" || this.cvv == null ){
-         //   alert("All fields needs to be filled")
-         //   return
-         // }
-
          this.$store.dispatch("sendOrder", {
             items: this.cartItemId,
             user: this.$store.state.Token,

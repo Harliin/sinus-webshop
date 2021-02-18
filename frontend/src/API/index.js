@@ -22,8 +22,7 @@ export async function Register(newUser){
             body: JSON.stringify(newUser)
         });
         let data = await req.json()
-        console.log(data);
-        
+        return data
     } catch (error) {
         console.log(error);
     }
@@ -31,8 +30,6 @@ export async function Register(newUser){
 }
 
 export async function SendOrder(Order) {
-    console.log("Api sending order");
-    console.log(Order.user);
     try{
         let req = await fetch('http://localhost:5000/api/orders/', {
             method: "POST",
@@ -41,7 +38,6 @@ export async function SendOrder(Order) {
             body: JSON.stringify(Order)
         });
         let data = await req.json()
-        console.log(data);
         return [req, data]
     }
     catch(ex){
@@ -58,7 +54,6 @@ export async function EditProduct(Action, User, Product) {
             body: JSON.stringify(Product)
         });
         let data = await req.json()
-        console.log(data);
         return [req, data]
     }
     catch(ex){
@@ -74,7 +69,6 @@ export async function DeleteProduct(User, ProductId) {
                       "Authorization": `Bearer ${User}`},
         });
         let data = await req.json()
-        console.log(data);
         return [req, data]
     }
     catch(ex){
