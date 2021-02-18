@@ -12,12 +12,6 @@ export default {
   props: {
     show: Boolean,
   },
-  //   methods:{
-  //       close(){
-  //           this.show = false
-  //           this.$emit('close')
-  //       }
-  //   }
 };
 </script>
 

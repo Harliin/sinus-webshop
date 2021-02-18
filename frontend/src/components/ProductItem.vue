@@ -1,7 +1,9 @@
 <template>
    <div class="product-container">
       <div v-if="snackbarActive">
-         <Snackbar />
+         <Snackbar>
+                 <p>Item added to cart</p>
+         </Snackbar>
       </div>
       <div class="header">
          <h2 @click="showOverlay" class="product-name">

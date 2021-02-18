@@ -8,7 +8,9 @@
       />
 
       <div v-if="snackbarActive">
-         <Snackbar />
+         <Snackbar>
+            <p>Item added to cart</p>
+         </Snackbar>
       </div>
 
       <div v-if="overlayOpen">

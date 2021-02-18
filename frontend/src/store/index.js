@@ -33,8 +33,6 @@ export default new Vuex.Store({
          });
       },
       checkLogin(state, data) {
-         console.log(data[1]);
-
          if (data[0].status == 200) {
             state.LoggedIn = true;
             state.LoggedInUser = data[1].user;
@@ -69,11 +67,10 @@ export default new Vuex.Store({
          sessionStorage.removeItem("user");
          state.LoggedIn = false;
          state.LoggedInUser = {};
-        
+
       },
       resetCart(state, data) {
          if (data[0].status == 200) {
-            console.log(data);
             state.Cart = [];
             state.totalPrice = 0;
          } else {
@@ -117,7 +114,6 @@ export default new Vuex.Store({
          await API.Register(payload);
       },
       async addToCart(context, payload) {
-         console.log(payload);
          context.commit("addItemToCart", payload);
       },
       async decrementItem(context, payload) {
@@ -131,7 +127,6 @@ export default new Vuex.Store({
          context.commit("logOut");
       },
       async editProduct(context, payload) {
-         console.log(payload);
          let data = await API.EditProduct(
             payload.action,
             payload.user,
@@ -143,11 +138,9 @@ export default new Vuex.Store({
             context.commit("updateProducts", data[1].data);
          }
 
-         alert(data[1].message);
       },
       async deleteProduct(_context, payload) {
          let data = await API.DeleteProduct(payload.user, payload.productId);
-         console.log(data);
          alert(data[1].message);
       },
       async checkUser(context) {
@@ -160,13 +153,13 @@ export default new Vuex.Store({
    modules: {},
    getters: {
       loggedIn: (state) => {
-         if(state.LoggedInUser.role == "customer" || state.LoggedInUser.role == "admin"){
+         if (state.LoggedInUser.role == "customer" || state.LoggedInUser.role == "admin") {
             return true
          }
          else return false
       },
       checkIfAdmin: (state) => {
-         if(state.LoggedInUser.role == "admin")return true
+         if (state.LoggedInUser.role == "admin") return true
          else return false
       },
       totalPrice(state) {
@@ -175,7 +168,6 @@ export default new Vuex.Store({
             0
          );
       },
-
       getUser: (state) => {
          return state.LoggedInUser;
       },

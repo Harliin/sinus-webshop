@@ -1,11 +1,11 @@
 <template>
-   <div class="snackbar animate__animated animate__bounceInDown">
-      <p>Item added to cart</p>
+   <div class="snackbar animate__animated animate__bounceInDown" >
+      <slot></slot>
    </div>
 </template>
 
 <script>
-export default {};
+
 </script>
 
 <style lang="scss" scoped>

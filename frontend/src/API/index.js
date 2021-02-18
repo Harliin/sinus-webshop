@@ -16,7 +16,6 @@ export async function Login(userCredentials) {
 
 export async function Register(newUser){
     try {
-        console.log(newUser);
         let req = await fetch('http://localhost:5000/api/register/', {
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -51,8 +50,6 @@ export async function SendOrder(Order) {
 }
 
 export async function EditProduct(Action, User, Product) {
-    console.log("Api sending order");
-    console.log(Action, User, Product);
     try{
         let req = await fetch('http://localhost:5000/api/products/' + Product._id, {
             method: Action,
@@ -70,8 +67,6 @@ export async function EditProduct(Action, User, Product) {
 }
 
 export async function DeleteProduct(User, ProductId) {
-    console.log("Deleting product");
-    console.log(User, ProductId);
     try{
         let req = await fetch('http://localhost:5000/api/products/' + ProductId, {
             method: "DELETE",
